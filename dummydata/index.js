@@ -4,6 +4,7 @@ import {
   BsFillGearFill,
   BsShieldFillCheck,
 } from "react-icons/bs";
+import { theme } from "../styles/Theme";
 
 export const services = [
   {
@@ -40,18 +41,26 @@ export const services = [
 export const statistics = [
   {
     number: "200",
-    title: "Works",
+    title:
+      "Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ' όλη τη διάρκεια των έργων σας.",
+    color: theme.green,
   },
   {
     number: "23",
-    title: "Samples",
+    title:
+      "Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ' όλη τη διάρκεια των έργων σας.",
+    color: theme.blue,
   },
   {
     number: "422",
-    title: "Clients",
+    title:
+      "Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ' όλη τη διάρκεια των έργων σας.",
+    color: theme.orange,
   },
   {
     number: "100",
-    title: "Projects",
+    title:
+      "Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ' όλη τη διάρκεια των έργων σας.",
+    color: theme.brown,
   },
 ];

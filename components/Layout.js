@@ -24,4 +24,9 @@ const LayoutStyled = styled.section`
 const Main = styled.main`
   z-index: 1;
   height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

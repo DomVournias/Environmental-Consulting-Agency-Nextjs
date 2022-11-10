@@ -10,13 +10,11 @@ export const size = {
   desktop: "160rem",
 };
 
-export const device = {
-  mobileS: `(max-width: ${size.mobileS})`,
-  mobileM: `(max-width: ${size.mobileM})`,
-  mobileL: `(max-width: ${size.mobileL})`,
-  tablet: `(max-width: ${size.tablet})`,
-  laptop: `(max-width: ${size.laptop})`,
-  laptopL: `(max-width: ${size.laptopL})`,
-  desktop: `(max-width: ${size.desktop})`,
-  desktopL: `(max-width: ${size.desktop})`,
-};
+export const mobileS = `(max-width: ${size.mobileS})`;
+export const mobileM = `(max-width: ${size.mobileM})`;
+export const mobileL = `(max-width: ${size.mobileL})`;
+export const tablet = `(max-width: ${size.tablet})`;
+export const laptop = `(max-width: ${size.laptop})`;
+export const laptopL = `(max-width: ${size.laptopL})`;
+export const desktop = `(max-width: ${size.desktop})`;
+export const desktopL = `(max-width: ${size.desktop})`;

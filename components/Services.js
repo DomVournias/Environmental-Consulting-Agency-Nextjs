@@ -56,8 +56,28 @@ const ServicesWrapper = styled.div`
 
 const ServiceCards = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-gap: 2em;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      clamp(
+        clamp(
+          clamp(
+            100%/ (var(--c4) + 1) + 0.1%,
+            (var(--xl) - 100%) * 1000,
+            100%/ (var(--c2) + 1) + 0.1%
+          ),
+          (var(--l) - 100%) * 1000,
+          100%/ (var(--c2) + 1) + 0.1%
+        ),
+        (var(--t) - 100%) * 1000,
+        100%
+      ),
+      1fr
+    )
+  );
+
+  gap: 2.5em;
+  overflow: hidden;
 `;
 const Service = styled.div`
   display: flex;

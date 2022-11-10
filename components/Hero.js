@@ -1,15 +1,20 @@
 import Link from "next/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import styled from "styled-components";
+import { laptop } from "../styles/Breakpoints";
 
 const Hero = () => {
   return (
     <VideoHero>
       <Wrapper>
         <Overlay />
-        <Video src="/BackgroundVideo.mp4" autoPlay loop muted />
+        <Video autoPlay loop muted>
+          <source type="video/mp4" src="/BackgroundVideo.m4v" />
+        </Video>
         <Container>
-          <Title>Waste it or preserve it. The choice is yours.</Title>
+          <Title>Αξιοπιστία, Τεχνογνωσία, Συνέπεια.</Title>
+          <Slogan>Waste it or preserve it. The choice is yours.</Slogan>
+
           <CTA href="/">
             Eπικοινωνια <AiOutlineArrowRight />
           </CTA>
@@ -32,9 +37,9 @@ export default Hero;
 
 const VideoHero = styled.div`
   display: flex;
-  position: relative;
-  /* margin-bottom: 5em; */
   flex-direction: column;
+  width: 100%;
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -79,19 +84,31 @@ const Video = styled.video`
 `;
 
 const Container = styled.div`
-  z-index: 2;
-  width: 720px;
-  margin-left: 20vw;
   display: flex;
   flex-direction: column;
+
+  max-width: var(--left);
+  margin: auto auto auto clamp(2rem, 20vw, 23.5rem);
   gap: 1.4em;
-  cursor: pointer;
+  padding-top: 6em;
+  padding-bottom: 8em;
   z-index: 4;
+
+  @media ${laptop} {
+    margin: 0 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 64px;
-  line-height: 74px;
+  font-size: ${({ theme }) => theme.font.h1};
+
+  font-weight: 700;
+`;
+
+const Slogan = styled.h4`
+  font-size: ${({ theme }) => theme.font.h4};
 `;
 
 const CTA = styled(Link)`
@@ -116,7 +133,6 @@ const Bottom = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: fit-content;
-
   background-color: ${({ theme }) => theme.blue};
   z-index: 4;
 `;
@@ -125,10 +141,16 @@ const CalloutMessage = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1em;
-  width: 720px;
+  max-width: var(--left);
   padding: 3.5em;
   padding-left: 0;
-  margin-left: 20vw;
+  margin: auto auto auto clamp(2rem, 20vw, 23.5rem);
+
+  @media ${laptop} {
+    margin: 0 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 
   > h2 {
     font-size: 1.6rem;

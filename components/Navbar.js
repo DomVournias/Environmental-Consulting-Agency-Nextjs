@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import styled from "styled-components";
-import { device } from "../styles/Breakpoints";
+import geonLogoWhite from "../public/GeonLogo.png";
+import geonLogoDark from "../public/GeonLogoDark.png";
+import { tablet } from "../styles/Breakpoints";
 
 const Navbar = () => {
   const pages = [
@@ -26,18 +28,20 @@ const Navbar = () => {
         <Left>
           <LogoWhite href="/">
             <Image
-              src="/GeonLogo.png"
-              layout="fill"
+              src={geonLogoWhite}
+              // layout="fill"
               objectFit="contain"
               alt="logo"
+              width="100"
             />
           </LogoWhite>
           <LogoDark href="/">
             <Image
-              src="/GeonLogoDark.png"
-              layout="fill"
+              src={geonLogoDark}
+              // layout="fill"
               objectFit="contain"
               alt="logo"
+              width="100"
             />
           </LogoDark>
         </Left>
@@ -68,6 +72,7 @@ export default Navbar;
 const LogoWhite = styled(Link)`
   opacity: 1;
   display: block;
+  position: absolute;
 `;
 const LogoDark = styled(Link)`
   opacity: 0;
@@ -117,8 +122,6 @@ const Left = styled.div`
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  width: 120px;
-  height: 112px;
 `;
 
 const Icon = styled.button`
@@ -129,7 +132,7 @@ const Icon = styled.button`
 `;
 
 const Center = styled.div`
-  @media ${device.tablet} {
+  @media ${tablet} {
     display: none;
   }
   ul {

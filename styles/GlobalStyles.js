@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { device } from "./Breakpoints";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -7,6 +6,8 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* overflow-y: overlay;
+    scrollbar-gutter: overlay; */
   }
 
   body {
@@ -50,6 +51,20 @@ export const GlobalStyles = createGlobalStyle`
 
 * {
   box-sizing: border-box;
+  /* Breakpoints */
+  --container: 73rem;
+  --left: 40rem;
+  --sm: 20rem; // 320px
+  --ml: 25rem; // 400px
+  --t: 48rem; // 768px
+  --l: 64rem; // 1024px
+  --xl: 90rem; // 1440px
+  --d: 160rem; // 2560px
+  --c1:1;
+  --c2:2;
+  --c4:4;
+  --c8:8;
+
 }
 
 *:focus {
@@ -60,11 +75,47 @@ svg {
   box-sizing: content-box;
 }
 
+::-webkit-scrollbar {
+  width: 0.5em;
+  
+  
+  
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  transition: background-color .4s cubic-bezier(.23, 1, .32, 1);
+  mix-blend-mode: difference;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0,0);
+  mix-blend-mode: difference;
+  
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(120 100% 20% / 1);
+  border-radius: 100vw;
+  transition: background-color .4s cubic-bezier(.23, 1, .32, 1);
+  mix-blend-mode: difference;
+  background-color: hsla(0,0%,0%,0.6);
+  -webkit-transition: background-color .4s cubic-bezier(.23, 1, .32, 1);
+  transition: background-color .4s cubic-bezier(.23, 1, .32, 1);
+  mix-blend-mode: difference;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(0,0%,0%,0.7);
+}
+
+
+
 `;
 
 export const OnlyMobile = styled.div`
   display: none;
-  @media ${device.tablet} {
+  @media ${({ theme }) => theme.device.tablet} {
     display: flex;
     padding: 0em 1em;
   }
