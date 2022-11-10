@@ -9,7 +9,7 @@ const Hero = () => {
       <Wrapper>
         <Overlay />
         <Video autoPlay loop muted>
-          <source type="video/mp4" src="/BackgroundVideo.m4v" />
+          <source type="video/mp4" src="BackgroundVideo.m4v" />
         </Video>
         <Container>
           <Title>Αξιοπιστία, Τεχνογνωσία, Συνέπεια.</Title>
