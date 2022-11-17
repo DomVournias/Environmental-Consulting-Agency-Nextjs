@@ -1,14 +1,16 @@
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../styles/Theme";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Header from "./Header";
 
 const Layout = ({ children }) => {
   return (
-    <LayoutStyled>
+    <LayoutStyled id="Layout">
       <ThemeProvider theme={theme}>
-        <Navbar />
-        <Main>{children}</Main>
+        <Header />
+        <Main>
+          <article>{children}</article>
+        </Main>
         <Footer />
       </ThemeProvider>
     </LayoutStyled>
@@ -17,16 +19,10 @@ const Layout = ({ children }) => {
 
 export default Layout;
 
-const LayoutStyled = styled.section`
-  transition: all 0.3s ease;
+const LayoutStyled = styled.div`
+  /* transition: all 0.3s ease; */
 `;
 
 const Main = styled.main`
-  z-index: 1;
-  height: fit-content;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: block;
 `;

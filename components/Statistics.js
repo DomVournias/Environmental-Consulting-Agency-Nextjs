@@ -1,103 +1,106 @@
 import React from "react";
 import styled from "styled-components";
 import { statistics } from "../dummydata";
+import { Section } from "../styles/GlobalStyles";
 
-const Counter = () => {
+const Statistics = () => {
   return (
-    <Container>
+    <Section m="9rem auto 6rem auto">
       <Wrapper>
-        <Heading>
-          <h5>Στατιστικά</h5>
-          {/* <p>
-            Παράγραφος τριών σειρών, σύντομη περιγραφή των στατιστικών της
-            εταιρίας. *παραδειγμα τίτλου & περιγραφής
-          </p> */}
-        </Heading>
-        <Statistics>
-          {statistics.map(({ number, title, color }, i) => (
-            <Statistic key={i} bg={color}>
-              <span>{number}</span>
-              <p>{title}</p>
-            </Statistic>
-          ))}
-        </Statistics>
+        <VideoPlayer>
+          <Overlay />
+          <Video autoPlay loop muted>
+            <source type="video/mp4" src="/BackgroundVideo.mp4" />
+          </Video>
+        </VideoPlayer>
+
+        <Content>
+          <Heading>
+            <span>Waste it or preserve it.</span>
+            <span>The choice is yours.</span>
+          </Heading>
+          <Stats>
+            {statistics.map(({ number, title, color }, i) => (
+              <Stat key={i} bg={color}>
+                <span>{number}</span>
+                <p>{title}</p>
+              </Stat>
+            ))}
+          </Stats>
+        </Content>
       </Wrapper>
-    </Container>
+    </Section>
   );
 };
 
-export default Counter;
+export default Statistics;
 
-const Container = styled.div`
-  width: 100%;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 5em;
-  background-color: ${({ theme }) => theme.silver};
-`;
-
-const Wrapper = styled.div`
+const Content = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  max-width: 90rem;
-  margin: 0 auto;
-  justify-content: center;
-  gap: 2em;
-  padding: 4em;
-  background-color: ${({ theme }) => theme.white};
-  border-radius: 20px;
-`;
-
-const Heading = styled.div`
-  display: flex;
-  width: 40%;
-  flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  gap: 2em;
-
-  h5 {
-    font-size: 3rem;
-    padding-bottom: 0.5em;
-  }
-
-  p {
-    font-size: 1.2rem;
-    font-weight: 300;
-    max-width: 60%;
-  }
+  justify-content: center;
+  gap: 6rem;
+  padding-left: 4em;
 `;
-const Statistics = styled.div`
+
+const Heading = styled.h2`
   display: flex;
-  gap: 4em;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.font.headingLG};
+  font-weight: 500;
+  width: 100%;
+  z-index: 3;
+  /* mix-blend-mode: overlay; */
+`;
+
+const Stats = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4rem;
   /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
-  grid-row-gap: 3em;
-  width: 60%; */
+  grid-gap: 3rem; */
+  width: 100%;
 `;
 
-const Statistic = styled.div`
+const Stat = styled.li`
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  width: 17rem;
-  height: 17rem;
-  padding: 2.3em;
-  padding-top: 0em;
-  border-radius: 100%;
-  border-top-left-radius: 0px;
-  border-left: 2px solid rgba(12, 132, 255, 1);
-  /* background-color: ${(props) => props.bg}; */
 
   span {
-    font-size: 3.6rem;
-    padding-bottom: 10px;
+    font-size: ${({ theme }) => theme.font.headingLG};
+    margin-bottom: 1rem;
   }
 
   p {
-    font-size: 1.2rem;
-
-    opacity: 0.6;
+    font-size: ${({ theme }) => theme.font.plg};
+    width: 80%;
   }
+`;
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const VideoPlayer = styled.div`
+  width: calc(0vw + 47%);
+  height: 50rem;
+  position: relative;
+`;
+const Overlay = styled.div`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+`;
+const Video = styled.video`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  z-index: 1;
 `;

@@ -2,12 +2,16 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
 
+
+
   html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
     /* overflow-y: overlay;
     scrollbar-gutter: overlay; */
+    
   }
 
   body {
@@ -16,7 +20,12 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    
   }
+
+  body.disable-scroll {
+    overflow: hidden;
+}
 
   a:hover {
       opacity: .9;
@@ -65,6 +74,10 @@ export const GlobalStyles = createGlobalStyle`
   --c4:4;
   --c8:8;
 
+  /* Typography */
+
+  --headingLG: 2rem, 10vw, 6rem;
+
 }
 
 *:focus {
@@ -109,7 +122,7 @@ svg {
   background-color: hsla(0,0%,0%,0.7);
 }
 
-
+/* Global Components */
 
 `;
 
@@ -119,4 +132,29 @@ export const OnlyMobile = styled.div`
     display: flex;
     padding: 0em 1em;
   }
+`;
+
+export const Container = styled.div`
+  margin: 0 auto;
+  max-width: ${(props) => props.mx};
+  padding: ${(props) => props.p};
+  height: ${(props) => props.h};
+`;
+
+export const Section = styled.section`
+  display: block;
+  width: ${(props) => props.w};
+  max-width: ${(props) => props.mx};
+  height: ${(props) => props.h};
+  max-height: ${(props) => props.mh};
+  margin: ${(props) => props.m};
+  margin-top: ${(props) => props.mt};
+  margin-bottom: ${(props) => props.mb};
+  margin-left: ${(props) => props.ml};
+  margin-right: ${(props) => props.mr};
+  padding: ${(props) => props.p};
+  padding-top: ${(props) => props.pt};
+  padding-bottom: ${(props) => props.pb};
+  padding-left: ${(props) => props.pl};
+  padding-right: ${(props) => props.pr};
 `;

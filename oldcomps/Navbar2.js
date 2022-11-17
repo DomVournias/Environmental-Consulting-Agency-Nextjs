@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import styled from "styled-components";
@@ -92,7 +92,7 @@ const Header = styled.header`
   transition: all 0.3s ease;
   margin-bottom: -100px;
 
-  :hover {
+  /* :hover {
     background-color: rgba(255, 255, 255, 255);
     color: rgba(0, 0, 0, 1);
 
@@ -103,7 +103,7 @@ const Header = styled.header`
     ${LogoDark} {
       opacity: 1;
     }
-  }
+  } */
 `;
 
 const Nav = styled.nav`
