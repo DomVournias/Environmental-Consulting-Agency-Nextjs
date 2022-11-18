@@ -9,7 +9,7 @@ import geonLogoWhite from "../public/GeonLogoWhite.png";
 import { Container } from "../styles/GlobalStyles";
 import SocialMedia from "./SocialMedia";
 
-const Header = () => {
+const Header = ({ headerMenu }) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => setIsToggled((prevState) => !prevState);
@@ -67,10 +67,10 @@ const Header = () => {
             <Content>
               <Links isToggled={isToggled}>
                 <ul>
-                  {routes.map(({ name, slug }, i) => (
+                  {headerMenu.map(({ label, path }, i) => (
                     <li key={i}>
-                      <Link href={`/${slug}`}>
-                        <span>{name}</span>
+                      <Link href={`${path}`}>
+                        <span>{label}</span>
                         <Arrow />
                       </Link>
                     </li>
@@ -107,7 +107,7 @@ const fadeUp = css`
   opacity: ${({ isToggled }) => (isToggled ? "1" : "0")};
 `;
 
-const ContactInfo = styled.div`
+const ContactInfo = styled.aside`
   width: 34%;
   display: flex;
   flex-direction: column;
@@ -153,7 +153,7 @@ const Content = styled.div`
   gap: 2.5rem;
 `;
 
-const Links = styled.div`
+const Links = styled.nav`
   width: 66%;
 
   // Animation

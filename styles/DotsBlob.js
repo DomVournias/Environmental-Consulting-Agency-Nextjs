@@ -4,7 +4,7 @@ const DotsBlob = () => {
       <svg viewBox="0 0 1000 1000">
         <defs>
           <filter id="grain" x="-50vw" y="-50vh" width="100vw" height="100vh">
-            <feFlood flood-color="#ffffff" result="neutral-gray" />
+            <feFlood floodColor="#ffffff" result="neutral-gray" />
 
             <feTurbulence
               in="neutral-gray"
@@ -53,7 +53,7 @@ const DotsBlob = () => {
           </clipPath>
         </defs>
 
-        <g filter="url(#grain)" clip-path="url(#shape)">
+        <g filter="url(#grain)" clipPath="url(#shape)">
           <path
             fill="url(#pattern)"
             d="M952.5,647Q905,794,780,885Q655,976,500,976Q345,976,220,885Q95,794,47.5,647Q0,500,47.5,353Q95,206,220,115Q345,24,500,24Q655,24,780,115Q905,206,952.5,353Q1000,500,952.5,647Z"

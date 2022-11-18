@@ -1,13 +1,16 @@
 import styled, { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "../styles/GlobalStyles";
 import { theme } from "../styles/Theme";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, headerMenu }) => {
+  console.log(headerMenu);
   return (
-    <LayoutStyled id="Layout">
+    <LayoutStyled>
+      <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Header />
+        <Header headerMenu={headerMenu} />
         <Main>
           <article>{children}</article>
         </Main>

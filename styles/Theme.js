@@ -1,5 +1,5 @@
 export const theme = {
-  blue: "rgba(12, 132, 255, 1)",
+  blue: "#006270",
   green: "rgba(156, 190, 43, 1)",
   brown: "#363635",
   orange: "#fe5e41",
@@ -8,7 +8,7 @@ export const theme = {
   white: "#fff",
   silver: "rgba(229, 229, 229, 0.6)",
   font: {
-    headingLG: "clamp(2rem, 10vw, 4.5rem)",
+    headingLG: "clamp(2rem, 10vw, 4rem)",
     plg: "clamp(1rem, 10vw, 1.2rem)",
     base: "1rem",
     sm: "2rem",
