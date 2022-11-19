@@ -98,6 +98,7 @@ const GET_PROJECT_DETAILS = (slug) => {
   query Project {
     project(id: "${slug}", idType: SLUG) {
       slug
+      title
       id
       date
       features {
@@ -117,6 +118,19 @@ const GET_PROJECT_DETAILS = (slug) => {
       }
       content(format: RENDERED)
       excerpt(format: RENDERED)
+    }
+    menu(id: "Front Menu", idType: NAME) {
+      id
+      name
+      slug
+      menuItems {
+        edges {
+          node {
+            label
+            path
+          }
+        }
+      }
     }
   }
 `;

@@ -1,9 +1,13 @@
 import Image from "next/legacy/image";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
+import Header from "../../components/Header";
 import Layout from "../../components/Layout";
+import SEOHead from "../../components/SEO";
 import { Section } from "../../styles/GlobalStyles";
 import client from "../../utils/apollo";
+import globalMeta from "../../utils/globalmeta";
 import { GET_PROJECT_DETAILS, GET_PROJECT_SLUG } from "../../utils/queries";
 
 export const getStaticPaths = async () => {
@@ -30,32 +34,69 @@ export const getStaticProps = async ({ params: { slug } }) => {
   return {
     props: {
       project: data.project,
+      headerMenu: data.menu.menuItems.edges.map((item) => item.node),
     },
     revalidate: 1,
   };
 };
 
-const ProjectInfo = ({ project }) => {
-  console.log(project);
+const structuredLd = JSON.stringify({
+  "@context": globalMeta.canonicalUrl + "/",
+  description: "Environmental Consultants",
+});
+
+const ProjectInfo = ({ project, headerMenu }) => {
+  const router = useRouter();
+
+  console.log(router);
+
   const image = project.featuredImage.node.sourceUrl;
   return (
     <Layout>
-      <Section mx="71.25rem" m="0 auto">
-        <FeaturedImage>
-          <Image
-            src={image}
-            layout="fill"
-            objectFit="cover"
-            alt={`image-${project.slug}`}
-          />
-        </FeaturedImage>
-      </Section>
-      <Section mx="71.25rem" m="0 auto">
-        <Info></Info>
-        <Content
-          dangerouslySetInnerHTML={{ __html: project.content }}
-        ></Content>
-      </Section>
+      <SEOHead
+        canonicalUrl={globalMeta.siteUrl}
+        structuredData={structuredLd}
+        title="Geon Hellas | Environmental Consultants"
+        description="Environmental Consultants"
+      />
+      <Header headerMenu={headerMenu} />
+      <main>
+        <article>
+          <Section mx="67.25rem" m="0 auto">
+            <FeaturedImage>
+              <Image
+                src={image}
+                layout="fill"
+                objectFit="cover"
+                alt={`image-${project.slug}`}
+              />
+            </FeaturedImage>
+            <Info>
+              <Block>
+                <span>Ημερομηνία</span>
+                <p>{project.features.projectDate}</p>
+              </Block>
+              <td> </td>
+              <Block>
+                <span>Πελάτης</span>
+                <p>{project.title}</p>
+              </Block>
+              <td> </td>
+              <Block>
+                <span>Υπηρεσίες</span>
+                {project.tags.nodes.map((service, i) => (
+                  <p key={i}># {service.name}</p>
+                ))}
+              </Block>
+            </Info>
+            {project ? (
+              <Content dangerouslySetInnerHTML={{ __html: project?.content }} />
+            ) : (
+              "Loading..."
+            )}
+          </Section>
+        </article>
+      </main>
     </Layout>
   );
 };
@@ -63,10 +104,34 @@ const ProjectInfo = ({ project }) => {
 export default ProjectInfo;
 
 const Info = styled.div`
-  margin: 4rem 1.5rem;
+  display: flex;
+
+  gap: 2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background-color: #fff;
+
+  td {
+    border: 1px solid #000;
+    opacity: 0.85;
+  }
 `;
+
+const Block = styled.div`
+  span {
+    opacity: 0.8;
+  }
+  p {
+    margin-left: 1rem;
+  }
+`;
+
 const Content = styled.div`
-  margin: 4rem 1.5rem;
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+  background-color: #fff;
+  line-height: 1.5rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 3rem;
 `;
 
 const FeaturedImage = styled.div`
@@ -74,7 +139,9 @@ const FeaturedImage = styled.div`
   width: auto;
   display: flex;
   position: relative;
-  margin: 4rem 1.5rem;
-  border-radius: 20px;
+  margin-top: 4rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   overflow: hidden;
+  background-color: #fff;
 `;

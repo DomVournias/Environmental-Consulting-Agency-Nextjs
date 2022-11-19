@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import styled, { css } from "styled-components";
-import { routes } from "../dummydata";
 import geonLogoDark from "../public/GeonLogoDark.png";
 import geonLogoWhite from "../public/GeonLogoWhite.png";
 import { Container } from "../styles/GlobalStyles";

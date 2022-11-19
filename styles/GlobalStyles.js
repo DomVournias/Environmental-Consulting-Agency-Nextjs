@@ -26,6 +26,9 @@ export const GlobalStyles = createGlobalStyle`
   body.disable-scroll {
     overflow: hidden;
 }
+  body.gray-background {
+    background-color: #e5e5e5;
+  }
 
   a:hover {
       opacity: .9;
