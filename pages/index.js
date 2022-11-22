@@ -2,7 +2,6 @@ import Features from "../components/Features";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
-import Marquee from "../components/Marquee";
 import Projects from "../components/Projects";
 import SEOHead from "../components/SEO";
 import Services from "../components/Services";
@@ -25,12 +24,11 @@ export default function Home({ projects, headerMenu }) {
         description="Environmental Consultants"
       />
       <Header headerMenu={headerMenu} />
-      <main>
+      <main className="App">
         <article>
           <Hero />
-          <Marquee />
           <Statistics />
-          <Features />
+          {/* <Features /> */}
           <Services />
           <Projects projects={projects} />
         </article>

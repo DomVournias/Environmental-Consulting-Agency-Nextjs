@@ -1,34 +1,90 @@
+import Image from "next/legacy/image";
 import Link from "next/link";
 import React from "react";
 
 import styled from "styled-components";
-import { links, socials } from "../dummydata";
+import { links } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
+import Marquee from "./Marquee";
 import SocialMedia from "./SocialMedia";
 
 const Hero = () => {
   return (
-    <Section mx="71.25rem" m="6rem auto 4rem auto" p="0 1rem 0 1rem">
-      <Title>
-        <span>Αξιοπιστία. </span>
-        <span>Τεχνογνωσία. </span>
-        <span>Συνέπεια. </span>
-      </Title>
-      <HeroMenu>
-        <ul>
-          {links.map(({ name, link }, i) => (
-            <li key={i}>
-              <Link href={`/${link}`}>{name}</Link>
-            </li>
-          ))}
-        </ul>
-        <SocialMedia color={`${({ theme }) => theme.black}`} />
-      </HeroMenu>
+    <Section mx="" mt="-132px" p="" overflow="hidden">
+      <Inner>
+        <span id="ballone">
+          <span>
+            <Image src="/backHero1.png" width="700" height="700" />
+          </span>
+        </span>
+        <span id="balltwo">
+          <span>
+            <Image src="/backHero2.png" width="500" height="500" />
+          </span>
+        </span>
+
+        <Wrapper>
+          <Title>
+            <span>Αξιοπιστία. </span>
+            <span>Τεχνογνωσία. </span>
+            <span>Συνέπεια. </span>
+          </Title>
+          <HeroMenu>
+            <ul>
+              {links.map(({ name, link }, i) => (
+                <li key={i}>
+                  <Link href={`/${link}`}>{name}</Link>
+                </li>
+              ))}
+            </ul>
+            <SocialMedia color={`${({ theme }) => theme.black}`} />
+          </HeroMenu>
+          <Marquee />
+        </Wrapper>
+      </Inner>
     </Section>
   );
 };
 
 export default Hero;
+
+const Inner = styled.div`
+  padding-top: 17rem;
+  padding-bottom: 1rem;
+  background-color: ${({ theme }) => theme.hero};
+  position: relative;
+
+  & #ballone {
+    top: -20rem;
+    right: -15rem;
+    opacity: 0.6;
+  }
+
+  & #balltwo {
+    bottom: -10rem;
+    left: -10rem;
+    opacity: 0.6;
+  }
+
+  & #ballone,
+  & #balltwo {
+    > span {
+      position: relative;
+      display: block;
+    }
+  }
+
+  & #ballone,
+  & #balltwo {
+    position: absolute;
+  }
+`;
+
+const Wrapper = styled.div`
+  max-width: 71.25rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+`;
 
 const HeroMenu = styled.div`
   display: flex;
@@ -73,7 +129,7 @@ const HeroMenu = styled.div`
 const Title = styled.h1`
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.font.headingLG};
+  font-size: ${({ theme }) => theme.font.h.lg};
   font-weight: 500;
   margin: 0 0 0.7em;
 

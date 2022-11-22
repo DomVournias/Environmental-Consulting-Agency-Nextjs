@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { statistics } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
+import { animate } from "framer-motion";
+import CountUp from "react-countup";
 
 const Statistics = () => {
   return (
-    <Section m="9rem auto 6rem auto">
+    <Section m="5rem auto 6rem auto">
       <Wrapper>
         <VideoPlayer>
           <Overlay />
@@ -22,7 +24,10 @@ const Statistics = () => {
           <Stats>
             {statistics.map(({ number, title, color }, i) => (
               <Stat key={i} bg={color}>
-                <span>{number}</span>
+                <span>
+                  <CountUp start={0} end={+number} duration={2} delay={0} />
+                </span>
+
                 <p>{title}</p>
               </Stat>
             ))}
@@ -45,10 +50,36 @@ const Content = styled.div`
   padding-left: 4em;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const VideoPlayer = styled.div`
+  width: calc(0vw + 47%);
+  height: 80vh;
+  position: relative;
+`;
+const Overlay = styled.div`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+`;
+const Video = styled.video`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  z-index: 1;
+`;
+
 const Heading = styled.h2`
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.font.headingLG};
+  font-size: ${({ theme }) => theme.font.h.md};
   font-weight: 500;
   width: 100%;
   z-index: 3;
@@ -70,37 +101,12 @@ const Stat = styled.li`
   flex-direction: column;
 
   span {
-    font-size: ${({ theme }) => theme.font.headingLG};
+    font-size: ${({ theme }) => theme.font.h.md};
     margin-bottom: 1rem;
   }
 
   p {
-    font-size: ${({ theme }) => theme.font.plg};
+    font-size: ${({ theme }) => theme.font.p.sm};
     width: 80%;
   }
-`;
-const Wrapper = styled.div`
-  display: flex;
-`;
-
-const VideoPlayer = styled.div`
-  width: calc(0vw + 47%);
-  height: 50rem;
-  position: relative;
-`;
-const Overlay = styled.div`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-`;
-const Video = styled.video`
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scaleX(-1);
-  z-index: 1;
 `;

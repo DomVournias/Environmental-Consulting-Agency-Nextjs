@@ -1,6 +1,9 @@
+import { m } from "framer-motion";
+
 export const theme = {
   blue: "#006270",
-  green: "rgba(156, 190, 43, 1)",
+  green: "#9cbe2b",
+  hero: "rgba(229, 239, 240, 1)",
   brown: "#363635",
   orange: "#fe5e41",
   tint: "#d6fff6",
@@ -8,8 +11,16 @@ export const theme = {
   white: "#fff",
   silver: "rgba(229, 229, 229, 0.6)",
   font: {
-    headingLG: "clamp(2rem, 10vw, 4rem)",
-    plg: "clamp(1rem, 10vw, 1.2rem)",
+    h: {
+      sm: "clamp(2rem, 10vw, 4rem)",
+      md: "clamp(2rem, 10vw, 4.2rem)",
+      lg: "clamp(2rem, 10vw, 4.7rem)",
+    },
+    p: {
+      sm: "clamp(1rem, 10vw, 1.2rem)",
+      md: "clamp(1rem, 10vw, 1.4rem)",
+      lg: "",
+    },
     base: "1rem",
     sm: "2rem",
     md: "3rem",

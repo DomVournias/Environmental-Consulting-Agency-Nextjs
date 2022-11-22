@@ -57,7 +57,7 @@ const Wrapper = styled.div`
     z-index: 2;
     background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 1) 0%,
+      ${({ theme }) => theme.hero} 0%,
       rgba(255, 255, 255, 0) 100%
     );
   }

@@ -3,14 +3,16 @@ import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
 
+  * {
+  position:relative;
+  box-sizing:border-box;
+  }
 
   html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
-    /* overflow-y: overlay;
-    scrollbar-gutter: overlay; */
+
     
   }
 
@@ -146,6 +148,7 @@ export const Container = styled.div`
 
 export const Section = styled.section`
   display: block;
+  overflow: ${(props) => props.overflow};
   width: ${(props) => props.w};
   max-width: ${(props) => props.mx};
   height: ${(props) => props.h};
