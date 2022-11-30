@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { setCookie, hasCookie } from "cookies-next";
 import { IoMdClose } from "react-icons/io";
+import { theme } from "../styles/Theme";
 
 function CookiesConsent() {
   const [consent, setConsent] = useState(true);
@@ -42,20 +43,24 @@ function CookiesConsent() {
   return (
     <Container>
       <Banner>
-        <Info>
-          This site uses cookies to enhance your experience. See our{" "}
-          <Link href="/docs/privacy-policy">privacy policy</Link> for more.
-        </Info>
-        <Buttons>
-          <Link href="/">Preferences</Link>
-          <Consent>
-            <Decline onClick={(e) => denyCookies()}>Decline</Decline>
-            <Accept onClick={(e) => acceptCookies()}>Accept</Accept>
-            <Close onClick={(e) => closeP()}>
-              <IoMdClose />
-            </Close>
-          </Consent>
-        </Buttons>
+        <div>
+          <Info>
+            <span>
+              This site uses cookies to enhance your experience.<br></br> See
+              our <Link href="/docs/privacy-policy">privacy policy</Link> for
+              more.
+            </span>
+          </Info>
+          <Buttons>
+            <Consent>
+              <Decline onClick={(e) => denyCookies()}>Decline</Decline>
+              <Accept onClick={(e) => acceptCookies()}>Accept</Accept>
+            </Consent>
+          </Buttons>
+        </div>
+        <Close onClick={(e) => closeP()}>
+          <IoMdClose />
+        </Close>
       </Banner>
     </Container>
   );
@@ -66,21 +71,25 @@ export default CookiesConsent;
 const Container = styled.div`
   display: flex;
   position: fixed;
-  left: 0;
+  /* left: 0; */
   top: auto;
   right: 0;
   bottom: 0;
   z-index: 298;
-  padding: 24px 32px;
+  padding: 14px 12px;
 `;
 
 const Banner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 755px;
-  padding: 15px 24px;
+  /* gap: 0.6rem; */
+  /* width: 100%;
+  max-width: 255px; */
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   border-radius: 100vw;
   background-color: #edebeb;
   color: #252525;
@@ -94,14 +103,22 @@ const Banner = styled.div`
 const Info = styled.div`
   font-size: 14px;
   font-weight: 500;
+  display: flex;
+  margin-bottom: 15px;
+
+  span {
+    width: 100%;
+  }
 
   a {
     border-bottom: 1px solid #252525;
   }
 `;
+
 const Buttons = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 
   a {
     font-size: 14px;
@@ -112,8 +129,8 @@ const Buttons = styled.div`
 
 const ConsentButton = styled.button`
   min-width: 110px;
-  margin-left: 15px;
-  padding: 20px 10px;
+  /* margin-left: 15px; */
+  padding: 15px 20px;
   border-radius: 500px;
   border-color: rgba(37, 37, 37, 0);
   font-size: 17px;
@@ -125,6 +142,7 @@ const ConsentButton = styled.button`
 
 const Consent = styled.div`
   display: flex;
+  gap: 1rem;
   align-items: center;
 `;
 const Decline = styled(ConsentButton)`
@@ -133,9 +151,9 @@ const Decline = styled(ConsentButton)`
 `;
 
 const Accept = styled(ConsentButton)`
-  background-color: #252525;
+  background-color: ${theme.blueTint.dark.a};
+  opacity: 0.9;
   color: #dadada;
-  border: 2px solid #252525;
 `;
 
 const Close = styled.div`
@@ -146,7 +164,8 @@ const Close = styled.div`
   border-radius: 500px;
   background-color: #e0e0e0;
   box-shadow: none;
-  opacity: 1;
-  color: #252525;
+  opacity: 0.3;
+  color: #e0e0e0;
+  background-color: ${theme.blueTint.dark.a};
   cursor: pointer;
 `;
