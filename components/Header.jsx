@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import styled, { css } from "styled-components";
+import { links, routes } from "../dummydata";
 import geonLogoDark from "../public/GeonLogoDark.png";
 import geonLogoWhite from "../public/GeonLogoWhite.png";
-import { Container } from "../styles/GlobalStyles";
 import SocialMedia from "./SocialMedia";
 
 const Header = ({ headerMenu }) => {
@@ -24,7 +24,7 @@ const Header = ({ headerMenu }) => {
 
   return (
     <Wrapper>
-      <Container mx="90rem">
+      <Container>
         <Nav>
           <LogoWhite href="/" isToggled={isToggled}>
             <Image
@@ -54,19 +54,16 @@ const Header = ({ headerMenu }) => {
             isToggled={isToggled}
           >
             {" "}
-            <span aria-hidden={isToggled ? "false" : "true"}>
-              {" "}
-              Toggle navigation{" "}
-            </span>{" "}
+            <span> Toggle navigation </span>{" "}
           </MenuToggle>
         </Nav>
 
         <Menu visibility={isToggled ? "visible" : "hidden"}>
-          <Container mx="90rem" h="100%">
+          <Block>
             <Content>
               <Links isToggled={isToggled}>
                 <ul>
-                  {headerMenu.map(({ label, path }, i) => (
+                  {routes.map(({ label, path }, i) => (
                     <li key={i}>
                       <Link href={`${path}`}>
                         <span>{label}</span>
@@ -91,7 +88,7 @@ const Header = ({ headerMenu }) => {
                 <SocialMedia color={`${({ theme }) => theme.white}`} />
               </ContactInfo>
             </Content>
-          </Container>
+          </Block>
         </Menu>
       </Container>
     </Wrapper>
@@ -154,8 +151,6 @@ const Content = styled.div`
 
 const Links = styled.nav`
   width: 66%;
-
-  // Animation
   ${fadeUp}
   transition: ${({ isToggled }) =>
     isToggled ? "all .5s cubic-bezier(.4,0,.2,1);" : ""};
@@ -203,12 +198,26 @@ const Menu = styled.div`
   visibility: ${(props) => props.visibility};
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   top: 0;
   left: 0;
-  padding-top: 2rem;
+  height: 9rem;
+  display: flex;
+  align-items: center;
   width: 100%;
   z-index: 2000;
+`;
+
+const Container = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  max-width: 90rem;
+`;
+
+const Block = styled.div`
+  max-width: 90rem;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 const LogoWhite = styled(Link)`

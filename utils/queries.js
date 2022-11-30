@@ -36,6 +36,14 @@ const GET_ALL_WPDATA = gql`
         content(format: RENDERED)
       }
     }
+    statistics {
+      nodes {
+        data {
+          number
+        }
+        title
+      }
+    }
   }
 `;
 

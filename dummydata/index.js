@@ -96,35 +96,36 @@ export const projects = [
 
 export const routes = [
   {
-    name: "Αρχική",
-    slug: "",
+    label: "Έργα",
+    path: "/projects",
   },
   {
-    name: "Δουλειές",
-    slug: "projects",
+    label: "Υπηρεσίες",
+    path: "/services",
   },
   {
-    name: "Εταιρία",
-    slug: "about-us",
+    label: "Εταιρία",
+    path: "/about-us",
   },
   {
-    name: "Νέα",
-    slug: "news",
+    label: "Επικοινωνία",
+    path: "/contact",
   },
 ];
 
 export const links = [
   {
-    name: "Δουλειές",
-    link: "projects",
+    label: "Υπηρεσίες",
+    path: "/services",
   },
   {
-    name: "Εταιρία",
-    link: "about-us",
+    label: "Έργα",
+    path: "/projects",
   },
+
   {
-    name: "Επικοινωνία",
-    link: "contact",
+    label: "Εταιρία",
+    path: "/contact",
   },
 ];
 

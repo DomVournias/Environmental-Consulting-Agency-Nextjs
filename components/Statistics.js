@@ -1,13 +1,55 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { statistics } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
-import { animate } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import CountUp from "react-countup";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const Statistics = () => {
+const Statistics = ({ statistics }) => {
+  const [counterOn, setCounterOn] = useState(false);
+  const numbersRef = useRef(null);
+  const numbersInView = useInView(numbersRef);
+  const animation = useAnimation();
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const headings = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#content",
+        // markers: true,
+        start: "top 80%",
+        end: "top 50%",
+        scrub: 1,
+      },
+      defaults: {
+        duration: 3,
+      },
+    });
+
+    headings
+      .fromTo("#heading_one", { x: 30, opacity: 0 }, { x: 0, opacity: 1 })
+      .fromTo(
+        "#heading_two",
+        { x: 30, opacity: 0 },
+        { x: 0, opacity: 1, delay: 1 }
+      );
+  }, []);
+
+  useEffect(() => {
+    if (numbersInView) {
+      setCounterOn(true);
+    }
+    if (!numbersInView) {
+      setCounterOn(false);
+    }
+  }, [numbersInView]);
+
+  // console.log(numbersInView);
+
   return (
-    <Section m="5rem auto 6rem auto">
+    <Section m="8rem auto 8rem auto">
       <Wrapper>
         <VideoPlayer>
           <Overlay />
@@ -16,16 +58,25 @@ const Statistics = () => {
           </Video>
         </VideoPlayer>
 
-        <Content>
+        <Content id="content">
           <Heading>
-            <span>Waste it or preserve it.</span>
-            <span>The choice is yours.</span>
+            <span id="heading_one">Waste it or preserve it.</span>
+            <span id="heading_two">The choice is yours.</span>
           </Heading>
-          <Stats>
-            {statistics.map(({ number, title, color }, i) => (
-              <Stat key={i} bg={color}>
+          <Stats ref={numbersRef}>
+            {statistics.map(({ data, title }, i) => (
+              <Stat key={i}>
                 <span>
-                  <CountUp start={0} end={+number} duration={2} delay={0} />
+                  {numbersInView ? (
+                    <CountUp
+                      start={0}
+                      end={data.number}
+                      duration={2}
+                      delay={0}
+                    />
+                  ) : (
+                    0
+                  )}
                 </span>
 
                 <p>{title}</p>
@@ -76,7 +127,7 @@ const Video = styled.video`
   z-index: 1;
 `;
 
-const Heading = styled.h2`
+const Heading = styled(motion.h2)`
   display: flex;
   flex-direction: column;
   font-size: ${({ theme }) => theme.font.h.md};

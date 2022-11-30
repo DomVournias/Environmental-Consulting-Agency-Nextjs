@@ -20,10 +20,10 @@ export const Heading = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${({ theme }) => theme.margin.bottom.s7};
+  margin-bottom: 4rem;
 
   h3 {
-    font-size: ${({ theme }) => theme.font.headingLG};
+    font-size: ${({ theme }) => theme.font.h.md};
   }
 
   a {
@@ -43,7 +43,7 @@ export const Heading = styled.div`
       }
     }
     span {
-      font-size: ${({ theme }) => theme.font.sm};
+      font-size: ${({ theme }) => theme.font.p.lg};
       font-weight: 600;
     }
   }
@@ -63,7 +63,7 @@ export const Links = styled.ul`
   flex-direction: column;
   top: 20%;
   margin: 0;
-  font-size: 4.5rem;
+  font-size: ${({ theme }) => theme.font.h.md};
   font-weight: 500;
   overflow: hidden;
   z-index: 3;
@@ -83,7 +83,7 @@ export const Project = styled.li`
 `;
 
 export const Arrow = styled(BsArrowRight)`
-  font-size: 4.2rem;
+  font-size: 3.7rem;
   stroke-width: 0.4;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: ${(props) => props.opacity};

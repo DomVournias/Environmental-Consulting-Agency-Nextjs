@@ -59,44 +59,40 @@ const ProjectInfo = ({ project, headerMenu }) => {
         title="Geon Hellas | Environmental Consultants"
         description="Environmental Consultants"
       />
-      <Header headerMenu={headerMenu} />
-      <main>
-        <article>
-          <Section mx="67.25rem" m="0 auto">
-            <FeaturedImage>
-              <Image
-                src={image}
-                layout="fill"
-                objectFit="cover"
-                alt={`image-${project.slug}`}
-              />
-            </FeaturedImage>
-            <Info>
-              <Block>
-                <span>Ημερομηνία</span>
-                <p>{project.features.projectDate}</p>
-              </Block>
-              <td> </td>
-              <Block>
-                <span>Πελάτης</span>
-                <p>{project.title}</p>
-              </Block>
-              <td> </td>
-              <Block>
-                <span>Υπηρεσίες</span>
-                {project.tags.nodes.map((service, i) => (
-                  <p key={i}># {service.name}</p>
-                ))}
-              </Block>
-            </Info>
-            {project ? (
-              <Content dangerouslySetInnerHTML={{ __html: project?.content }} />
-            ) : (
-              "Loading..."
-            )}
-          </Section>
-        </article>
-      </main>
+
+      <Section mx="67.25rem" m="0 auto">
+        <FeaturedImage>
+          <Image
+            src={image}
+            layout="fill"
+            objectFit="cover"
+            alt={`image-${project.slug}`}
+          />
+        </FeaturedImage>
+        <Info>
+          <Block>
+            <span>Ημερομηνία</span>
+            <p>{project.features.projectDate}</p>
+          </Block>
+          <td> </td>
+          <Block>
+            <span>Πελάτης</span>
+            <p>{project.title}</p>
+          </Block>
+          <td> </td>
+          <Block>
+            <span>Υπηρεσίες</span>
+            {project.tags.nodes.map((service, i) => (
+              <p key={i}># {service.name}</p>
+            ))}
+          </Block>
+        </Info>
+        {project ? (
+          <Content dangerouslySetInnerHTML={{ __html: project?.content }} />
+        ) : (
+          "Loading..."
+        )}
+      </Section>
     </Layout>
   );
 };

@@ -3,10 +3,6 @@ import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
 
-  * {
-  position:relative;
-  box-sizing:border-box;
-  }
 
   html {
     margin: 0;
@@ -85,6 +81,10 @@ export const GlobalStyles = createGlobalStyle`
 
 }
 
+pre, code {
+  overflow: scroll;
+}
+
 *:focus {
   outline: none !important;
 }
@@ -148,6 +148,7 @@ export const Container = styled.div`
 
 export const Section = styled.section`
   display: block;
+  position: ${(props) => props.pos};
   overflow: ${(props) => props.overflow};
   width: ${(props) => props.w};
   max-width: ${(props) => props.mx};
@@ -163,4 +164,8 @@ export const Section = styled.section`
   padding-bottom: ${(props) => props.pb};
   padding-left: ${(props) => props.pl};
   padding-right: ${(props) => props.pr};
+  background-color: ${(props) => props.bg};
+  /* background-image: url(${(props) => props.bgImage});
+  background-repeat: ${(props) => props.bgRepeat};
+  background-size: ${(props) => props.bgSize}; */
 `;

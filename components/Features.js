@@ -4,42 +4,74 @@ import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { Section } from "../styles/GlobalStyles";
 
 const Features = () => {
+  const ref = useRef();
   useEffect(() => {
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
     }
-    const position = window.pageYOffset;
+    const position = window.scrollY;
 
-    console.log(position);
+    // console.log(position);
 
-    const tl = gsap.timeline({
+    gsap.to("#circle-one", {
+      y: 0,
+      scale: 10,
+      duration: 8,
       scrollTrigger: {
-        trigger: "#container",
-        pin: true,
-        start: "top top",
-        // end: "+=700",
-        scrub: true,
+        start: "top 0%",
+        end: "bottom 100%",
+        trigger: ref.current,
+        // scroll: ref.current,
+        pin: "#circle-one",
+        scrub: 1,
         pinSpacing: false,
         markers: true,
+        // end: () => `+=${ref.current.offsetHeight}`,
       },
     });
-
-    // circle animation
-
-    tl.to("#circle-one", {
-      scale: 2,
-    });
   }, []);
+  // const ref = useRef();
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     gsap.registerPlugin(ScrollTrigger);
+  //   }
+  //   const position = window.scrollY;
+
+  //   console.log(position);
+
+  //   gsap.to("#circle-one", {
+  //     y: 0,
+  //     scale: 10,
+  //     duration: 8,
+  //     scrollTrigger: {
+  //       start: "top 0%",
+  //       end: "bottom 100%",
+  //       trigger: ref.current,
+  //       // scroll: ref.current,
+  //       pin: "#circle-one",
+  //       scrub: 1,
+  //       pinSpacing: false,
+  //       markers: true,
+  //       // end: () => `+=${ref.current.offsetHeight}`,
+  //     },
+  //   });
+
+  // }, []);
 
   return (
-    <Container id="container">
-      <Wrapper id="wrapper">
-        <span id="circle-one" />
-        {/* <span id="circle-two"></span> */}
-      </Wrapper>
-    </Container>
+    <Section overflow="hidden">
+      <Container id="container" ref={ref}>
+        <div id="canvas">
+          <div id="inner">
+            <span id="circle-one" />
+            <span id="circle-two" />
+          </div>
+        </div>
+      </Container>
+    </Section>
   );
 };
 
@@ -47,40 +79,51 @@ export default Features;
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  height: 200vh;
   background-color: gray;
-`;
+  /* position: relative; */
 
-const Wrapper = styled.div`
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding-top: 10rem;
-
-  span {
-    display: flex;
-    text-align: center;
-    /* position: sticky; */
-    right: 0;
+  & #canvas {
+    /* position: absolute; */
     left: 0;
-    top: 10rem;
-    bottom: 0;
-    margin: auto;
-    border-radius: 100%;
-  }
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vw;
 
-  & #circle-one {
-    width: 274px;
-    height: 274px;
-    background-color: #000;
-  }
+    & #inner {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
 
-  & #circle-two {
-    width: 234px;
-    height: 234px;
-    background-color: #fff;
+      span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: flex;
+        text-align: center;
+        border-radius: 100%;
+      }
+
+      & #circle-one {
+        width: 20vw;
+        height: 20vw;
+        background-color: #000;
+      }
+
+      & #circle-two {
+        width: 1vw;
+        height: 1vw;
+        background-color: #fff;
+      }
+    }
   }
 `;

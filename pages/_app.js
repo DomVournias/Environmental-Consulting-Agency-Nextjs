@@ -1,19 +1,21 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { getCookie } from "cookies-next";
+import ChangeBackground from "../utils/changeBackground";
+import { TagManagerScript, UpdateTagManager } from "../utils/tagManager";
+// import useCommonProps from "next-common-props/useCommonProps";
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  const consent = getCookie("localConsent");
 
-  useEffect(() => {
-    if (router.pathname === `/projects/[slug]`) {
-      window.document.body.classList.add("gray-background");
-    }
-    if (router.pathname !== `/projects/[slug]`) {
-      window.document.body.classList.remove("gray-background");
-    }
-  }, [router]);
-
-  return <Component {...pageProps} />;
+  // const { common } = useCommonProps();
+  // console.log(common);
+  ChangeBackground();
+  return (
+    <>
+      <TagManagerScript />
+      {consent === true && <UpdateTagManager />}
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;

@@ -57,7 +57,7 @@ const Wrapper = styled.div`
     z-index: 2;
     background: linear-gradient(
       to right,
-      ${({ theme }) => theme.hero} 0%,
+      ${({ theme }) => theme.white} 0%,
       rgba(255, 255, 255, 0) 100%
     );
   }
@@ -97,6 +97,7 @@ const MarqueeGroup = styled.ul`
   ${common}
 `;
 const Logo = styled.li`
+  position: relative;
   display: grid;
   place-items: center;
   width: clamp(10rem, 1rem + 40vmin, 30rem);

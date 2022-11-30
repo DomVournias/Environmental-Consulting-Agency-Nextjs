@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+const nextCommonProps = require("next-common-props");
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -10,4 +13,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = nextCommonProps(nextConfig);

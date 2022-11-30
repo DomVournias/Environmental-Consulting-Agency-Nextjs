@@ -1,17 +1,41 @@
-import { m } from "framer-motion";
-
 export const theme = {
   blue: "#006270",
   green: "#9cbe2b",
-  hero: "rgba(229, 239, 240, 1)",
+  blueTint: {
+    dark: {
+      a: "#000a0b",
+      b: "#001416",
+      c: "#001d22",
+      d: "#00272d",
+      e: "#003138",
+      f: "#003b43",
+      g: "#00454e",
+      h: "#004e5a",
+      i: "#005865",
+    },
+    light: {
+      a: "#e6eff1",
+      b: "#cce0e2",
+      c: "#b3d0d4",
+      d: "#99c0c6",
+      e: "#80b1b8",
+      f: "#66a1a9",
+      g: "#4d919b",
+      h: "#33818d",
+      i: "#1a727e",
+    },
+  },
+  hero: "#cce0e2",
   brown: "#363635",
   orange: "#fe5e41",
   tint: "#d6fff6",
   black: "#000",
   white: "#fff",
   silver: "rgba(229, 229, 229, 0.6)",
+  // blueTint: "#00272d",
   font: {
     h: {
+      xs: "clamp(1.3rem, 10vw, 3.5rem)",
       sm: "clamp(2rem, 10vw, 4rem)",
       md: "clamp(2rem, 10vw, 4.2rem)",
       lg: "clamp(2rem, 10vw, 4.7rem)",
@@ -19,7 +43,7 @@ export const theme = {
     p: {
       sm: "clamp(1rem, 10vw, 1.2rem)",
       md: "clamp(1rem, 10vw, 1.4rem)",
-      lg: "",
+      lg: "clamp(1.2rem, 10vw, 1.8rem)",
     },
     base: "1rem",
     sm: "2rem",

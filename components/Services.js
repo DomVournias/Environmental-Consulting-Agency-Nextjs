@@ -35,7 +35,7 @@ export default Services;
 
 const Heading = styled.div`
   margin: 0 auto;
-  font-size: ${({ theme }) => theme.font.headingLG};
+  font-size: ${({ theme }) => theme.font.h.md};
   font-weight: 500;
   z-index: 3;
 `;
@@ -74,13 +74,13 @@ const Service = styled.div`
   }
 
   h3 {
-    font-size: 2rem;
+    font-size: ${({ theme }) => theme.font.p.lg};
     margin-bottom: 1rem;
     z-index: 2;
   }
 
   p {
-    font-size: ${({ theme }) => theme.font.plg};
+    font-size: ${({ theme }) => theme.font.p.sm};
     z-index: 2;
   }
 `;
