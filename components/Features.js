@@ -25,7 +25,7 @@ const Features = () => {
           start: "top top",
           end: "+=3200",
           scrub: 0.3,
-          markers: true,
+          // markers: true,
         },
       });
 
