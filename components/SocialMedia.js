@@ -1,16 +1,23 @@
-import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import { socials } from "../dummydata";
 
 const SocialMedia = (props) => {
   return (
-    <Socials color={props.color}>
+    <Socials bg={props.color}>
       <p>Βρείτε μας</p>
       {socials.map(({ name, icon, link }, i) => (
-        <Link href={`${link}`} key={i} id={name}>
+        <a
+          href={`${link}`}
+          key={i}
+          id={`${i}-${name}`}
+          data-c={`${name}-data`}
+          aria-label={`${name}-data-link`}
+          target="_blank"
+          rel="noreferrer"
+        >
           {icon}
-        </Link>
+        </a>
       ))}
     </Socials>
   );
@@ -22,7 +29,7 @@ const Socials = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${(props) => props.color};
+  color: ${(props) => props.bg};
   gap: 3.5rem;
   width: fit-content;
 
