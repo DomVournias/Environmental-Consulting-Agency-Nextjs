@@ -151,7 +151,7 @@ const Decline = styled(ConsentButton)`
 `;
 
 const Accept = styled(ConsentButton)`
-  background-color: ${theme.blueTint.dark.a};
+  background-color: ${theme.blueTint.dark.b};
   opacity: 0.9;
   color: #dadada;
 `;

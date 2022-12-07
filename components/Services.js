@@ -11,16 +11,20 @@ const Services = () => {
       <Wrapper>
         <Heading>Τι προσφέρουμε</Heading>
         <Content>
-          <BackBlob />
+          {/* <BackBlob /> */}
           {services.map(
-            ({ icon, title, description, show }, i) =>
+            ({ icon, title, servicesList, show }, i) =>
               show && (
                 <Service key={i}>
                   <Inner>
                     <DotsBlob />
                     <span>{icon}</span>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
+                    <ServiceTitle>{title}</ServiceTitle>
+                    <ServiceList>
+                      {servicesList.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ServiceList>
                   </Inner>
                 </Service>
               )
@@ -33,6 +37,24 @@ const Services = () => {
 
 export default Services;
 
+const ServiceTitle = styled.h3`
+  font-size: ${({ theme }) => theme.font.p.lg};
+  margin-bottom: 2rem;
+  z-index: 2;
+`;
+
+const ServiceList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: circle;
+  font-size: ${({ theme }) => theme.font.p.sm};
+
+  > li {
+    /* margin-bottom: 0.5rem; */
+  }
+`;
+
 const Heading = styled.div`
   margin: 0 auto;
   font-size: ${({ theme }) => theme.font.h.md};
@@ -44,10 +66,11 @@ const Content = styled.div`
   position: relative;
   display: flex;
   gap: 3rem;
+  /* margin-top: 4rem; */
 
-  > :nth-child(3) {
-    margin-top: 4rem;
-  }
+  /* > :nth-child(2) {
+    margin-top: -4rem;
+  } */
 `;
 
 const Wrapper = styled.div`
@@ -68,20 +91,11 @@ const Service = styled.div`
     z-index: 2;
 
     svg {
+      color: ${({ theme }) => theme.black};
+      opacity: 0.9;
       padding: 1rem;
       z-index: 2;
     }
-  }
-
-  h3 {
-    font-size: ${({ theme }) => theme.font.p.lg};
-    margin-bottom: 1rem;
-    z-index: 2;
-  }
-
-  p {
-    font-size: ${({ theme }) => theme.font.p.sm};
-    z-index: 2;
   }
 `;
 
@@ -102,11 +116,14 @@ const Inner = styled.div`
   overflow: hidden;
   z-index: 2;
   transition: all 0.3s ease-out;
-  ${glass}
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  /* ${glass} */
 
-  :hover {
+  /* :hover {
     background-color: rgba(255, 255, 255, 0.77);
-  }
+  } */
 
   > svg {
     position: absolute;

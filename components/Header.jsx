@@ -282,7 +282,8 @@ const MenuToggle = styled.button`
   ::before {
     ${linesPosition}
     right: 50%;
-    background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")};
+    /* background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")}; */
+    background: #fff;
   }
 
   & span {
@@ -301,7 +302,8 @@ const MenuToggle = styled.button`
     white-space: nowrap;
     overflow: hidden;
     transform: translate(25px, -50%) rotate(0deg);
-    background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")};
+    /* background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")}; */
+    background: #fff;
     transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -318,6 +320,7 @@ const MenuToggle = styled.button`
     ${linesPosition}
     right: 50%;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")};
+    /* background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")}; */
+    background: #fff;
   }
 `;

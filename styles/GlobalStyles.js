@@ -165,6 +165,7 @@ export const Section = styled.section`
   padding-left: ${(props) => props.pl};
   padding-right: ${(props) => props.pr};
   background-color: ${(props) => props.bg};
+
   /* background-image: url(${(props) => props.bgImage});
   background-repeat: ${(props) => props.bgRepeat};
   background-size: ${(props) => props.bgSize}; */

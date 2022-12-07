@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../../components/Header";
 import Layout from "../../components/Layout";
 import SEOHead from "../../components/SEO";
-
 import client from "../../utils/apollo";
 import globalMeta from "../../utils/globalmeta";
 
@@ -13,8 +11,6 @@ export const getStaticPaths = async () => {
   const { data } = await client.query({
     query: GET_DOC_SLUG,
   });
-
-  console.log(data);
 
   const paths = data.docs.nodes.map((doc) => ({
     params: {
@@ -46,7 +42,6 @@ const structuredLd = JSON.stringify({
 });
 
 const DocumentPage = ({ doc }) => {
-  // console.log(doc);
   return (
     <Layout>
       <SEOHead
@@ -104,6 +99,6 @@ const Title = styled.h2`
   margin-bottom: 2rem;
 `;
 
-const Content = styled.p`
+const Content = styled.div`
   line-height: 1.5rem;
 `;

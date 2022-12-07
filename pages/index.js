@@ -9,6 +9,7 @@ import Marquee from "../components/Marquee";
 import Projects from "../components/Projects";
 import SEOHead from "../components/SEO";
 import Services from "../components/Services";
+import Services2 from "../components/Services2";
 import Statistics from "../components/Statistics";
 import client from "../utils/apollo";
 import globalMeta from "../utils/globalmeta";
@@ -28,11 +29,11 @@ export default function Home({ projects, headerMenu, statistics, common }) {
         title="Geon Hellas | Environmental Consultants"
         description="Environmental Consultants"
       />
-
       <Hero projects={projects} />
       <Statistics statistics={statistics} />
-      {/* <Features /> */}
-      <Services />
+      <Features />
+      {/* <Services /> */}
+      <Services2 />
       <Projects projects={projects} />
       <Marquee />
       <Isos />

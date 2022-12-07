@@ -58,7 +58,13 @@ const Footer = () => {
             <div>
               <span>Βρείτε μας</span>
               {socials.map(({ name, icon, link }, i) => (
-                <a target="_blank" rel="noreferrer" href={`${link}`} key={i} id={name}>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={`${link}`}
+                  key={i}
+                  id={name}
+                >
                   {icon}
                 </a>
               ))}
@@ -76,6 +82,7 @@ const Title = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  opacity: 0.9;
 
   span {
     color: ${({ theme }) => theme.white};
@@ -117,7 +124,7 @@ const Socials = styled.div`
 const FooterStyled = styled.footer`
   padding: 8rem 0rem;
   /* height: 90vh; */
-  background-color: ${({ theme }) => theme.black};
+  background-color: ${({ theme }) => theme.blueTint.dark.b};
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -138,7 +145,7 @@ const Links = styled.nav`
   display: flex;
   color: ${({ theme }) => theme.white};
   padding: 10rem 0rem;
-  opacity: 0.9;
+  opacity: 0.8;
 
   > div {
     width: 50%;

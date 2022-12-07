@@ -1,4 +1,4 @@
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { theme } from "../styles/Theme";
 import CookiesConsent from "./CokiesConsent";
@@ -12,9 +12,9 @@ const Layout = ({ children }) => {
       <CookiesConsent />
       <ThemeProvider theme={theme}>
         <Header />
-        <main>
+        <Main>
           <article>{children}</article>
-        </main>
+        </Main>
         <Footer />
       </ThemeProvider>
     </>
@@ -22,3 +22,7 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+
+const Main = styled.main`
+  background-color: #fff;
+`;

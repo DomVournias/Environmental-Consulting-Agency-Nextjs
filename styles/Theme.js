@@ -39,6 +39,7 @@ export const theme = {
       sm: "clamp(2rem, 10vw, 4rem)",
       md: "clamp(2rem, 10vw, 4.2rem)",
       lg: "clamp(2rem, 10vw, 4.7rem)",
+      xl: "clamp(2rem, 10vw, 5.7rem)",
     },
     p: {
       sm: "clamp(1rem, 10vw, 1.2rem)",

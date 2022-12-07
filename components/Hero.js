@@ -13,21 +13,21 @@ import CallButton from "./CallButton";
 
 const Hero = ({ projects }) => {
   useEffect(() => {
-    gsap.fromTo(
-      ".heading",
-      {
-        opacity: 0,
-        y: "-100px",
-      },
-      {
-        y: "0px",
-        opacity: 0.85,
-        duration: 0.4,
+    // gsap.fromTo(
+    //   ".heading",
+    //   {
+    //     opacity: 0,
+    //     y: "-100px",
+    //   },
+    //   {
+    //     y: "0px",
+    //     opacity: 0.85,
+    //     duration: 0.4,
 
-        stagger: 0.6,
-        visibility: "visible",
-      }
-    );
+    //     stagger: 0.6,
+    //     visibility: "visible",
+    //   }
+    // );
 
     gsap.fromTo(
       "#image",
@@ -44,35 +44,6 @@ const Hero = ({ projects }) => {
         visibility: "visible",
       }
     );
-
-    // gsap.fromTo(
-    //   "#menu",
-    //   {
-    //     opacity: 0,
-    //     y: 40,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     y: 0,
-    //     duration: 0.5,
-    //     delay: 2,
-    //     visibility: "visible",
-    //   }
-    // );
-
-    // gsap.fromTo(
-    //   "#socials",
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     duration: 0.5,
-
-    //     delay: 2.5,
-    //     visibility: "visible",
-    //   }
-    // );
   }, []);
 
   const titles = [
@@ -99,7 +70,7 @@ const Hero = ({ projects }) => {
   return (
     <Section mx="" mt="-9rem" p="" overflow="hidden">
       <Inner>
-        <span id="ballone">
+        {/* <span id="ballone">
           <span>
             <Image
               src="/backHero1.png"
@@ -118,8 +89,16 @@ const Hero = ({ projects }) => {
               alt="cirlceTwo"
             />
           </span>
-        </span>
-
+        </span> */}
+        <Overlay />
+        <Image
+          src="/heroBackImage.png"
+          alt="hero background"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          id="HeroBackgroundImage"
+        />
         <Wrapper>
           <Content>
             <Title>
@@ -127,33 +106,33 @@ const Hero = ({ projects }) => {
                 <span key={i}>{text}</span>
               ))}
               <p>
-                Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ’ όλη τη
-                διάρκεια των έργων σας.
+                Για περισσότερα από 20 χρόνια παρέχουμε υπηρεσίες σε ένα ευρύ
+                φάσμα περιβαλλοντικών και τεχνικής υποστήριξης, διαθέτοντας μια
+                σταθερή βάση γνώσεων και μια ομάδα υψηλής εξειδίκευσης και
+                εμπειρίας.
               </p>
             </Title>
-            <ImageContainer id="image">
+            {/* <ImageContainer id="image">
               <Image
                 src="/heroGridImage5.png"
                 objectFit="contain"
                 alt="hero-image"
                 layout="fill"
               />
-            </ImageContainer>
+            </ImageContainer> */}
           </Content>
 
-          <HeroMenu id="menu">
+          {/* <HeroMenu id="menu">
             <ul>
               {links.map(({ label, path }, i) => (
-                <li key={i}>
+                <li key={i} className="button-86">
                   <Link href={`${path}`}>{label}</Link>
                 </li>
               ))}
             </ul>
             <CallButton />
-            {/* <Socials id="socials">
-              <SocialMedia color={`${({ theme }) => theme.black}`} />
-            </Socials> */}
-          </HeroMenu>
+            
+          </HeroMenu> */}
           {/* <Marquee /> */}
         </Wrapper>
       </Inner>
@@ -167,114 +146,74 @@ const Content = styled.div`
   display: flex;
   padding-bottom: 4rem;
 `;
-const ImageContainer = styled.div`
-  position: relative;
-  width: 50%;
-  margin-top: -6rem;
-  margin-left: 5rem;
-  margin-right: -5rem;
-  visibility: hidden;
+// const ImageContainer = styled.div`
+//   position: relative;
+//   width: 50%;
+//   margin-top: -6rem;
+//   margin-left: 5rem;
+//   margin-right: -5rem;
+//   visibility: hidden;
 
-  > span {
-    /* margin-top: -3rem !important; */
+//   > span {
+//     /* margin-top: -3rem !important; */
 
-    > img {
-    }
-  }
-`;
+//     > img {
+//     }
+//   }
+// `;
 
 const Title = styled.h1`
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  font-weight: 500;
   margin: 0 0 5rem;
+
+  span {
+    color: ${({ theme }) => theme.white};
+    font-size: ${({ theme }) => theme.font.h.lg};
+    font-weight: 500;
+    display: block;
+  }
 
   p {
     margin-top: 2em;
     opacity: 0.8;
+    font-weight: 400;
+    color: ${({ theme }) => theme.white};
     font-size: ${({ theme }) => theme.font.p.md};
-  }
-
-  span {
-    color: ${({ theme }) => theme.black};
-    background-color: ${({ theme }) => theme.hero};
-    font-size: ${({ theme }) => theme.font.h.lg};
-    display: block;
-    letter-spacing: -5px;
-    position: relative;
-    font-size: 5.2rem;
-    opacity: 0.9;
-
-    /* height: 7rem; */
-
-    /* svg {
-      font-size: 1.1rem;
-      margin-left: 1rem;
-    } */
-
-    /* > span {
-      position: absolute;
-      display: block;
-      visibility: hidden;
-    } */
-
-    /* & #first {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    & #second {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    & #third {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    } */
   }
 `;
 
 const Inner = styled.div`
   padding-top: 15rem;
   padding-bottom: 3rem;
-  background-color: ${({ theme }) => theme.blueTint.light.b};
+  height: 100vh;
   position: relative;
 
-  & #ballone {
-    top: -20rem;
-    right: -15rem;
-    opacity: 0.5;
+  &#HeroBackgroundImage {
+    z-index: 10;
   }
+`;
 
-  & #balltwo {
-    bottom: -10rem;
-    left: -10rem;
-    opacity: 0.5;
-  }
-
-  & #ballone,
-  & #balltwo {
-    > span {
-      position: relative;
-      display: block;
-    }
-  }
-
-  & #ballone,
-  & #balltwo {
-    position: absolute;
-  }
+const Overlay = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(255, 255, 255, 0.6); */
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 20;
 `;
 
 const Wrapper = styled.div`
   max-width: 71.25rem;
   padding: 0 1.5rem;
   margin: 0 auto;
+
+  & * {
+    z-index: 30;
+  }
 `;
 
 const HeroMenu = styled.div`
@@ -285,6 +224,7 @@ const HeroMenu = styled.div`
   background-color: ${({ theme }) => theme.blueTint.light.e};
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 12px;
+  z-index: 30;
 
   ul {
     font-size: ${({ theme }) => theme.font.p.sm};
@@ -303,31 +243,7 @@ const HeroMenu = styled.div`
         padding: 1rem 1.4rem;
         display: block;
         opacity: 0.9;
-
-        /* background-color: ${({ theme }) => theme.blueTint.light.c}; */
-
-        /* :hover {
-          ::after {
-            width: 0%;
-          }
-        }
-
-        ::after {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          content: " ";
-          display: block;
-          width: 100%;
-          height: 1px;
-          background: #000;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-        } */
       }
     }
   }
-`;
-
-const Socials = styled.div`
-  /* visibility: hidden; */
 `;

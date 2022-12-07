@@ -1,8 +1,6 @@
 import Image from "next/legacy/image";
-import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
-import Header from "../../components/Header";
 import Layout from "../../components/Layout";
 import SEOHead from "../../components/SEO";
 import { Section } from "../../styles/GlobalStyles";
@@ -45,11 +43,7 @@ const structuredLd = JSON.stringify({
   description: "Environmental Consultants",
 });
 
-const ProjectInfo = ({ project, headerMenu }) => {
-  const router = useRouter();
-
-  console.log(router);
-
+const ProjectInfo = ({ project }) => {
   const image = project.featuredImage.node.sourceUrl;
   return (
     <Layout>
@@ -59,8 +53,7 @@ const ProjectInfo = ({ project, headerMenu }) => {
         title="Geon Hellas | Environmental Consultants"
         description="Environmental Consultants"
       />
-
-      <Section mx="67.25rem" m="0 auto">
+      <Section m="-9rem auto 0 auto">
         <FeaturedImage>
           <Image
             src={image}
@@ -69,29 +62,28 @@ const ProjectInfo = ({ project, headerMenu }) => {
             alt={`image-${project.slug}`}
           />
         </FeaturedImage>
-        <Info>
-          <Block>
-            <span>Ημερομηνία</span>
-            <p>{project.features.projectDate}</p>
-          </Block>
-          <td> </td>
-          <Block>
-            <span>Πελάτης</span>
-            <p>{project.title}</p>
-          </Block>
-          <td> </td>
-          <Block>
-            <span>Υπηρεσίες</span>
-            {project.tags.nodes.map((service, i) => (
-              <p key={i}># {service.name}</p>
-            ))}
-          </Block>
-        </Info>
-        {project ? (
-          <Content dangerouslySetInnerHTML={{ __html: project?.content }} />
-        ) : (
-          "Loading..."
-        )}
+        <Inner>
+          <Info>
+            <Row>
+              <Block>
+                <span>Πελάτης</span>
+                <p>{project.title}</p>
+              </Block>
+              <Block>
+                <span>Ημερομηνία</span>
+                <p>{project.features.projectDate}</p>
+              </Block>
+            </Row>
+
+            <Block>
+              <span>Υπηρεσίες</span>
+              {project.tags.nodes.map((service, i) => (
+                <p key={i}># {service.name}</p>
+              ))}
+            </Block>
+          </Info>
+          <Content dangerouslySetInnerHTML={{ __html: project.content }} />
+        </Inner>
       </Section>
     </Layout>
   );
@@ -99,23 +91,36 @@ const ProjectInfo = ({ project, headerMenu }) => {
 
 export default ProjectInfo;
 
+const Inner = styled.div`
+  margin: 0 auto;
+  max-width: 67.25rem;
+`;
+
 const Info = styled.div`
   display: flex;
-
+  flex-direction: column;
   gap: 2rem;
+  margin-top: 3rem;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   background-color: #fff;
 
-  td {
-    border: 1px solid #000;
-    opacity: 0.85;
+  font-size: 1.2rem;
+
+  p {
+    font-weight: 500;
   }
+`;
+
+const Row = styled.div`
+  display: flex;
+  gap: 2rem;
 `;
 
 const Block = styled.div`
   span {
     opacity: 0.8;
   }
+
   p {
     margin-left: 1rem;
   }
@@ -124,10 +129,19 @@ const Block = styled.div`
 const Content = styled.div`
   padding: 0rem 1.5rem 1.5rem 1.5rem;
   background-color: #fff;
-  line-height: 1.5rem;
+  line-height: 2.5rem;
+  font-size: 1.4rem;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  margin-bottom: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+
+  &::first-letter {
+    initial-letter: 4;
+    font-size: 2.2rem;
+    color: ${({ theme }) => theme.blue};
+    font-weight: bold;
+  }
 `;
 
 const FeaturedImage = styled.div`
@@ -135,9 +149,22 @@ const FeaturedImage = styled.div`
   width: auto;
   display: flex;
   position: relative;
-  margin-top: 4rem;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
   overflow: hidden;
-  background-color: #fff;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 20%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0.8;
+  }
 `;

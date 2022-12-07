@@ -21,10 +21,8 @@ export const Heading = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
-
-  h3 {
-    font-size: ${({ theme }) => theme.font.h.md};
-  }
+  position: relative;
+  overflow: visible;
 
   a {
     display: flex;
@@ -47,6 +45,28 @@ export const Heading = styled.div`
       font-weight: 600;
     }
   }
+`;
+
+export const Title = styled.h3`
+  display: block;
+  box-sizing: border-box;
+  font-size: ${({ theme }) => theme.font.h.md};
+  color: ${({ theme }) => theme.black};
+  z-index: 300;
+  /* mix-blend-mode: difference; */
+`;
+
+export const Blob = styled.div`
+  display: block;
+  position: absolute;
+  top: -5rem;
+  left: -5rem;
+  z-index: 900;
+  width: 14rem;
+  height: 14rem;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  background-color: #fff;
 `;
 
 export const Content = styled.div`

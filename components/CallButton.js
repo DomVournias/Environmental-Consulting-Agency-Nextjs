@@ -125,4 +125,5 @@ const Text = styled(motion.span)`
   right: 1.5rem;
   z-index: 1;
   opacity: ${(props) => props.opacity};
+  user-select: none;
 `;
