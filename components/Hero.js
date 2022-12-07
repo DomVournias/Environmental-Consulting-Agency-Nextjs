@@ -1,65 +1,66 @@
-import gsap, { Elastic, Power3 } from "gsap";
+import gsap from "gsap";
 import Image from "next/legacy/image";
-import Link from "next/link";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { links } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
-import Marquee from "./Marquee";
-import SocialMedia from "./SocialMedia";
-import { IoShieldCheckmarkSharp } from "react-icons/io5";
-import { theme } from "../styles/Theme";
-import CallButton from "./CallButton";
 
 const Hero = ({ projects }) => {
+  // const [titleIndex, setTitleIndex] = useState(0);
   useEffect(() => {
-    // gsap.fromTo(
-    //   ".heading",
-    //   {
-    //     opacity: 0,
-    //     y: "-100px",
-    //   },
-    //   {
-    //     y: "0px",
-    //     opacity: 0.85,
-    //     duration: 0.4,
-
-    //     stagger: 0.6,
-    //     visibility: "visible",
-    //   }
-    // );
-
-    gsap.fromTo(
-      "#image",
-      {
-        opacity: 0,
-        // x: 30,
-      },
-      {
+    gsap.to("#description", {
+      y: 0,
+      opacity: 0.8,
+      visibility: "visible",
+      duration: 1,
+    });
+    gsap
+      .timeline({ repeat: -1 })
+      .to("#heading1", {
         opacity: 1,
-        // x: 0,
-        duration: 0.3,
-
-        delay: 1,
-        visibility: "visible",
-      }
-    );
+        duration: 2,
+      })
+      .to("#heading1", {
+        opacity: 0,
+        duration: 1,
+      })
+      .to("#heading2", {
+        opacity: 1,
+        duration: 2,
+      })
+      .to("#heading2", {
+        opacity: 0,
+        duration: 1,
+      })
+      .to("#heading3", {
+        opacity: 1,
+        duration: 2,
+      })
+      .to("#heading3", {
+        opacity: 0,
+        duration: 1,
+      });
   }, []);
 
   const titles = [
     {
-      id: "first",
+      id: "heading1",
       text: "Αξιοπιστία",
     },
     {
-      id: "second",
+      id: "heading2",
       text: "Τεχνογνωσία",
     },
     {
-      id: "third",
+      id: "heading3",
       text: "Συνέπεια",
     },
   ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      // setTitleIndex();
+    }, 2000);
+  }, []);
 
   const projectImages = projects.map(
     (image) => image.featuredImage.node.sourceUrl
@@ -103,15 +104,17 @@ const Hero = ({ projects }) => {
           <Content>
             <Title>
               {titles.map(({ id, text }, i) => (
-                <span key={i}>{text}</span>
+                <Text key={i} id={id}>
+                  {text}
+                </Text>
               ))}
-              <p>
-                Για περισσότερα από 20 χρόνια παρέχουμε υπηρεσίες σε ένα ευρύ
-                φάσμα περιβαλλοντικών και τεχνικής υποστήριξης, διαθέτοντας μια
-                σταθερή βάση γνώσεων και μια ομάδα υψηλής εξειδίκευσης και
-                εμπειρίας.
-              </p>
             </Title>
+            <Description id="description">
+              Για περισσότερα από 20 χρόνια παρέχουμε υπηρεσίες σε ένα ευρύ
+              φάσμα περιβαλλοντικών και τεχνικής υποστήριξης, διαθέτοντας μια
+              σταθερή βάση γνώσεων και μια ομάδα υψηλής εξειδίκευσης και
+              εμπειρίας.
+            </Description>
             {/* <ImageContainer id="image">
               <Image
                 src="/heroGridImage5.png"
@@ -142,35 +145,40 @@ const Hero = ({ projects }) => {
 
 export default Hero;
 
-const Content = styled.div`
-  display: flex;
-  padding-bottom: 4rem;
+const Text = styled.span`
+  opacity: 0;
+  /* visibility: hidden; */
+  color: ${({ theme }) => theme.white};
+  font-size: ${({ theme }) => theme.font.h.lg};
+  font-weight: 500;
+  display: block;
+  position: absolute;
 `;
 
-const Title = styled.h1`
+const Description = styled.p`
+  margin-top: 2em;
+  transform: translateY(3rem);
+  opacity: 0;
+  line-height: 2.8rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.white};
+  font-size: ${({ theme }) => theme.font.p.md};
+`;
+
+const Content = styled.div`
   width: 60%;
   display: flex;
   flex-direction: column;
-  margin: 0 0 5rem;
+  justify-content: center;
+`;
 
-  span {
-    color: ${({ theme }) => theme.white};
-    font-size: ${({ theme }) => theme.font.h.lg};
-    font-weight: 500;
-    display: block;
-  }
-
-  p {
-    margin-top: 2em;
-    opacity: 0.8;
-    font-weight: 400;
-    color: ${({ theme }) => theme.white};
-    font-size: ${({ theme }) => theme.font.p.md};
-  }
+const Title = styled.h1`
+  height: 5rem;
+  position: relative;
 `;
 
 const Inner = styled.div`
-  padding-top: 15rem;
+  padding-top: 19rem;
   padding-bottom: 3rem;
   height: 100vh;
   position: relative;
