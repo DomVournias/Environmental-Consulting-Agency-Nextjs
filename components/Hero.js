@@ -146,21 +146,6 @@ const Content = styled.div`
   display: flex;
   padding-bottom: 4rem;
 `;
-// const ImageContainer = styled.div`
-//   position: relative;
-//   width: 50%;
-//   margin-top: -6rem;
-//   margin-left: 5rem;
-//   margin-right: -5rem;
-//   visibility: hidden;
-
-//   > span {
-//     /* margin-top: -3rem !important; */
-
-//     > img {
-//     }
-//   }
-// `;
 
 const Title = styled.h1`
   width: 60%;
