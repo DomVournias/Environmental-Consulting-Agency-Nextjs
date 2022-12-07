@@ -162,8 +162,8 @@ const FeaturedImage = styled.div`
     background: rgb(255, 255, 255);
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 1) 20%,
-      rgba(255, 255, 255, 0) 100%
+      rgba(0, 0, 0, 1) 20%,
+      rgba(0, 0, 0, 0) 100%
     );
     opacity: 0.8;
   }
