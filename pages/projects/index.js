@@ -22,7 +22,7 @@ export async function getStaticProps() {
 }
 
 const ProjectsArchive = ({ projects }) => {
-  // console.log(projects);
+  console.log(projects);
   return (
     <Layout>
       <Section m="-9rem auto 0 auto">
@@ -44,7 +44,7 @@ const ProjectsArchive = ({ projects }) => {
             {projects.map((project, i) => (
               <Project key={i} id={project.id}>
                 <Link href={`/projects/${project.slug}`}>
-                  <Container bg={`url(/)`}>
+                  <Container>
                     <Image
                       src={project.featuredImage.node.sourceUrl}
                       alt={`project-${project.title}`}
@@ -55,6 +55,9 @@ const ProjectsArchive = ({ projects }) => {
 
                     <Info>
                       <Client>{project.title}</Client>
+                      <Description>
+                        {project.features.shortDescription}
+                      </Description>
                       <Tags>
                         {project.tags.nodes.map((tag, i) => (
                           <Tag key={i} id={`${tag.name}- ${i}`}>
@@ -77,6 +80,13 @@ const ProjectsArchive = ({ projects }) => {
 };
 
 export default ProjectsArchive;
+
+const Description = styled.p`
+  width: 60%;
+  font-size: ${({ theme }) => theme.font.p.xl};
+  line-height: 4.3rem;
+  font-weight: 500;
+`;
 
 const Title = styled.div`
   font-size: ${({ theme }) => theme.font.h.sm};
@@ -151,7 +161,7 @@ const Client = styled.h3`
 const Tags = styled.ul``;
 const Tag = styled.li`
   font-weight: 500;
-  font-size: clamp(1rem, 10vw, 1.3rem);
+  font-size: ${({ theme }) => theme.font.p.sl};
   margin-right: 0.5rem;
 `;
 
