@@ -22,6 +22,7 @@ const GET_ALL_WPDATA = gql`
         slug
         features {
           projectDate
+          shortDescription
         }
         tags {
           nodes {
