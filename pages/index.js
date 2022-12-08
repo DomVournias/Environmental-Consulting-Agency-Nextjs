@@ -15,7 +15,7 @@ import client from "../utils/apollo";
 import globalMeta from "../utils/globalmeta";
 import { GET_ALL_WPDATA } from "../utils/queries";
 
-export default function Home({ projects, headerMenu, statistics, common }) {
+export default function Home({ projects, statistics, common }) {
   const structuredLd = JSON.stringify({
     "@context": globalMeta.canonicalUrl + "/",
     description: "Environmental Consultants",
@@ -49,7 +49,6 @@ export async function getStaticProps() {
   return {
     props: {
       projects: data.projects.nodes,
-      headerMenu: data.menu.menuItems.edges.map((item) => item.node),
       statistics: data.statistics.nodes,
     },
     revalidate: 1,
