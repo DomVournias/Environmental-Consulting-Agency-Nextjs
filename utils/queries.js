@@ -112,7 +112,7 @@ const GET_PROJECT_DETAILS = (slug) => {
       date
       features {
         projectDate
-        services
+        
       }
       tags {
         nodes {

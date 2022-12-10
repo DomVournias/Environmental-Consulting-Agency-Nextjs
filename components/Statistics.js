@@ -17,8 +17,7 @@ const Statistics = ({ statistics }) => {
 
     const headings = gsap.timeline({
       scrollTrigger: {
-        trigger: "#content",
-        // markers: true,
+        trigger: "#statistics-content",
         start: "top 80%",
         end: "top 50%",
         scrub: 1,
@@ -58,7 +57,7 @@ const Statistics = ({ statistics }) => {
           </Video>
         </VideoPlayer>
 
-        <Content id="content">
+        <Content id="statistics-content">
           <Heading>
             <span id="heading_one">Waste it or preserve it.</span>
             <span id="heading_two">The choice is yours.</span>

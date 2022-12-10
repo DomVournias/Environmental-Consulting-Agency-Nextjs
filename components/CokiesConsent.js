@@ -75,7 +75,7 @@ const Container = styled.div`
   top: auto;
   right: 0;
   bottom: 0;
-  z-index: 298;
+  z-index: 9999;
   padding: 14px 12px;
 `;
 

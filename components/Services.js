@@ -1,36 +1,54 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { services } from "../dummydata";
-import BackBlob from "../styles/BackBlob";
-import DotsBlob from "../styles/DotsBlob";
 import { Section } from "../styles/GlobalStyles";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
+  useEffect(() => {
+    gsap.to("#servicesContainer", {
+      duration: 6,
+      borderTopLeftRadius: "0%",
+      borderTopRightRadius: "0%",
+      scrollTrigger: {
+        trigger: "#servivesSection",
+        start: "-20% bottom",
+        end: "20% start",
+        scrub: 0.3,
+        // markers: true,
+      },
+    });
+  }, []);
+
   return (
-    <Section mx="71.25rem" m="5rem auto 10rem auto" p="0 1rem 0 1rem">
-      <Wrapper>
-        <Heading>Τι προσφέρουμε</Heading>
-        <Content>
-          {/* <BackBlob /> */}
-          {services.map(
-            ({ icon, title, servicesList, show }, i) =>
-              show && (
-                <Service key={i}>
-                  <Inner>
-                    <DotsBlob />
-                    <span>{icon}</span>
-                    <ServiceTitle>{title}</ServiceTitle>
-                    <ServiceList>
-                      {servicesList.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ServiceList>
-                  </Inner>
-                </Service>
-              )
-          )}
-        </Content>
-      </Wrapper>
+    <Section bg="#1a1a1a" mt="-2rem" id="servicesSection" pos="relative">
+      <Container id="servicesContainer">
+        <Wrapper>
+          <Header>
+            <h3 id="titleServices">Τι προσφέρουμε</h3>
+            {/* <p>It is a long established fact that a reader will be distracted</p> */}
+          </Header>
+          <Cards>
+            {services.map(({ title, servicesList, icon, button, phone }, i) => (
+              <Service key={i}>
+                {icon ? <span>{icon}</span> : null}
+                <ServiceTitle>{title}</ServiceTitle>
+                <ServiceList>
+                  {servicesList.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ServiceList>
+                <div>
+                  {button} {button && <span>or</span>} {phone}
+                </div>
+              </Service>
+            ))}
+          </Cards>
+        </Wrapper>
+      </Container>
     </Section>
   );
 };
@@ -39,7 +57,7 @@ export default Services;
 
 const ServiceTitle = styled.h3`
   font-size: ${({ theme }) => theme.font.p.lg};
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   z-index: 2;
 `;
 
@@ -47,89 +65,139 @@ const ServiceList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  list-style: circle;
   font-size: ${({ theme }) => theme.font.p.sm};
+  list-style: disc;
+  list-style-type: disc;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 22px;
 
   > li {
-    /* margin-bottom: 0.5rem; */
+    display: list-item;
   }
 `;
 
-const Heading = styled.div`
-  margin: 0 auto;
-  font-size: ${({ theme }) => theme.font.h.md};
-  font-weight: 500;
-  z-index: 3;
-`;
-
-const Content = styled.div`
+const Container = styled.div`
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: ${({ theme }) => theme.white};
+  z-index: 999;
+  overflow: visible;
+  display: block;
   position: relative;
-  display: flex;
-  gap: 3rem;
-  /* margin-top: 4rem; */
-
-  /* > :nth-child(2) {
-    margin-top: -4rem;
-  } */
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8rem;
-  /* margin: 10rem 0; */
+  width: 95rem;
+  margin: 0 auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 11em;
+  position: relative;
 `;
 
-const Service = styled.div`
-  span {
-    display: inline-flex;
-    width: fit-content;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    background-color: rgba(156, 190, 43, 0.5);
-    border-radius: 20px;
-    z-index: 2;
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
 
-    svg {
-      color: ${({ theme }) => theme.black};
-      opacity: 0.9;
-      padding: 1rem;
-      z-index: 2;
-    }
+  h3 {
+    font-size: ${({ theme }) => theme.font.h.md};
   }
 `;
 
-const glass = css`
-  backdrop-filter: blur(9px) saturate(164%);
-  -webkit-backdrop-filter: blur(9px) saturate(164%);
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 1);
+const Cards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(
+      clamp(
+        clamp(
+          clamp(
+            100%/ (var(--c4) + 1) + 0.1%,
+            (var(--xl) - 100%) * 1000,
+            100%/ (var(--c2) + 1) + 0.1%
+          ),
+          (var(--l) - 100%) * 1000,
+          100%/ (var(--c2) + 1) + 0.1%
+        ),
+        (var(--t) - 100%) * 1000,
+        100%
+      ),
+      1fr
+    )
+  );
+
+  gap: 2.5em;
+  overflow: hidden;
 `;
 
-const Inner = styled.div`
-  position: relative;
+const Service = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 4rem;
-  border-radius: 20px;
-  overflow: hidden;
-  z-index: 2;
-  transition: all 0.3s ease-out;
-  background-color: rgba(0, 0, 0, 0.05);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  /* ${glass} */
+  gap: 1em;
+  padding: 2em;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.white};
+  background-color: rgba(0, 0, 0, 0.1);
 
-  /* :hover {
-    background-color: rgba(255, 255, 255, 0.77);
-  } */
+  &:nth-child(4) {
+    justify-content: space-between;
+    color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.blueTint.dark.b};
 
-  > svg {
-    position: absolute;
-    top: -10rem;
-    right: -10rem;
-    width: 20rem;
-    height: 20rem;
+    ul {
+      list-style: none;
+      list-style-type: none;
+      margin-block-start: 0em;
+      margin-block-end: 0em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 0px;
+
+      li {
+        font-size: ${({ theme }) => theme.font.p.sm};
+        display: block;
+        margin-top: -1.5rem;
+      }
+    }
+
+    div {
+      a,
+      span {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      span {
+        opacity: 0.7;
+      }
+
+      & :nth-child(1) {
+        color: #000;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 0.5em 1em;
+        font-size: 1.02rem;
+      }
+
+      & :nth-child(3) {
+        font-size: 1.02rem;
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+  }
+
+  > span {
+    font-size: 1.8rem;
+  }
+
+  p {
+    opacity: 0.85;
   }
 `;
