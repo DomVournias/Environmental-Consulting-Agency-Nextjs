@@ -1,11 +1,13 @@
 import { BsArrowRight } from "react-icons/bs";
 import styled from "styled-components";
+import { mobileL } from "./Breakpoints";
 
-export const Container = styled.section`
-  width: 100%;
+export const Container = styled.div`
   padding-left: 1em;
   padding-right: 1em;
-  margin-bottom: ${({ theme }) => theme.margin.bottom.s10};
+  margin: 0 auto;
+  margin-bottom: 8rem;
+  max-width: 90rem;
   z-index: 3;
 `;
 

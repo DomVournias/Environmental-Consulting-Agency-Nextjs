@@ -193,7 +193,7 @@ const Menu = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000;
+  background-color: ${({ theme }) => theme.blueTint.dark.a};
   z-index: 888;
   visibility: ${(props) => props.visibility};
 `;

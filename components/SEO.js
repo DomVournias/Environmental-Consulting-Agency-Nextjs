@@ -16,7 +16,7 @@ const SEOHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:site_name" content={globalMeta.siteName} />
