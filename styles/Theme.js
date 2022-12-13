@@ -32,7 +32,16 @@ export const theme = {
   black: "#000",
   white: "#fff",
   silver: "rgba(229, 229, 229, 0.6)",
-  // blueTint: "#00272d",
+
+  breakpoints: {
+    mobileS: "screen and (max-width: 20rem)",
+    mobileM: "screen and (max-width: 23.43rem)",
+    mobileL: "screen and (max-width: 26.56rem)",
+    tablet: "screen and (max-width: 48rem)",
+    laptop: "screen and (max-width: 64rem)",
+    laptopL: "screen and (max-width: 90rem)",
+    desktop: "screen and (max-width: 160rem)",
+  },
   font: {
     h: {
       xs: "clamp(1.3rem, 10vw, 3.5rem)",

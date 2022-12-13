@@ -28,25 +28,42 @@ const Services = () => {
       <Container id="servicesContainer">
         <Wrapper>
           <Header>
-            <h3 id="titleServices">Τι προσφέρουμε</h3>
-            {/* <p>It is a long established fact that a reader will be distracted</p> */}
+            <h3 id="titleServices">
+              Οι υπηρεσίες<br></br> που προσφέρουμε
+            </h3>
+            <p>
+              Προσφέρουμε ένα ολοκληρωμένο φάσμα περιβαλλοντικής τεχνογνωσίας
+              <br></br> σε θέματα διαχείρισης αποβλήτων και ενέργειας,<br></br>
+              που καλύπτει τόσο το σχεδιασμό και την ανάπτυξη έργων,<br></br>
+              όσο και την επίβλεψη της λειτουργίας.
+            </p>
           </Header>
           <Cards>
-            {services.map(({ title, servicesList, icon, button, phone }, i) => (
+            {services.map(({ title, servicesList, icon }, i) => (
               <Service key={i}>
-                {icon ? <span>{icon}</span> : null}
+                <span>{icon}</span>
                 <ServiceTitle>{title}</ServiceTitle>
                 <ServiceList>
                   {servicesList.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ServiceList>
-                <div>
-                  {button} {button && <span>or</span>} {phone}
-                </div>
               </Service>
             ))}
           </Cards>
+
+          <CTA>
+            <Info>
+              <Title>Μιλήστε με έναν ειδικό</Title>
+              <Message>
+                Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ όλη τη
+                διάρκεια των έργων σας.
+              </Message>
+            </Info>
+            <CTAButton>
+              <div>Ξεκινήστε τώρα</div>
+            </CTAButton>
+          </CTA>
         </Wrapper>
       </Container>
     </Section>
@@ -54,6 +71,78 @@ const Services = () => {
 };
 
 export default Services;
+
+const CTA = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  color: ${({ theme }) => theme.white};
+  background-color: ${({ theme }) => theme.blueTint.dark.b};
+  border-radius: 8px;
+  padding: 4rem 4rem;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h4`
+  font-size: ${({ theme }) => theme.font.p.lg};
+  margin-bottom: 2rem;
+`;
+
+const Message = styled.p`
+  font-size: ${({ theme }) => theme.font.p.sm};
+`;
+
+const CTAButton = styled.button`
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.font.p.sm};
+  color: ${({ theme }) => theme.blueTint.dark.e};
+  background-color: ${({ theme }) => theme.blueTint.light.a};
+  cursor: pointer;
+
+  div {
+    padding: 1rem 2rem;
+  }
+`;
+
+const Cards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  width: 100%;
+`;
+
+const Service = styled.div`
+  width: 30%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2em;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  ul {
+    gap: 1rem;
+    li {
+      opacity: 0.9;
+      font-size: ${({ theme }) => theme.font.p.sm};
+    }
+  }
+
+  > span {
+    font-size: 1.8rem;
+  }
+
+  p {
+    opacity: 0.85;
+  }
+`;
 
 const ServiceTitle = styled.h3`
   font-size: ${({ theme }) => theme.font.p.lg};
@@ -100,104 +189,19 @@ const Wrapper = styled.div`
 
 const Header = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 5rem;
+  width: 100%;
 
   h3 {
     font-size: ${({ theme }) => theme.font.h.md};
   }
-`;
-
-const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(
-      clamp(
-        clamp(
-          clamp(
-            100%/ (var(--c4) + 1) + 0.1%,
-            (var(--xl) - 100%) * 1000,
-            100%/ (var(--c2) + 1) + 0.1%
-          ),
-          (var(--l) - 100%) * 1000,
-          100%/ (var(--c2) + 1) + 0.1%
-        ),
-        (var(--t) - 100%) * 1000,
-        100%
-      ),
-      1fr
-    )
-  );
-
-  gap: 2.5em;
-  overflow: hidden;
-`;
-
-const Service = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  padding: 2em;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.white};
-  background-color: rgba(0, 0, 0, 0.1);
-
-  &:nth-child(4) {
-    justify-content: space-between;
-    color: ${({ theme }) => theme.white};
-    background-color: ${({ theme }) => theme.blueTint.dark.b};
-
-    ul {
-      list-style: none;
-      list-style-type: none;
-      margin-block-start: 0em;
-      margin-block-end: 0em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 0px;
-
-      li {
-        font-size: ${({ theme }) => theme.font.p.sm};
-        display: block;
-        margin-top: -1.5rem;
-      }
-    }
-
-    div {
-      a,
-      span {
-        display: inline-block;
-        margin-right: 10px;
-      }
-
-      span {
-        opacity: 0.7;
-      }
-
-      & :nth-child(1) {
-        color: #000;
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 0.5em 1em;
-        font-size: 1.02rem;
-      }
-
-      & :nth-child(3) {
-        font-size: 1.02rem;
-        text-decoration: underline;
-        text-underline-position: under;
-      }
-    }
-  }
-
-  > span {
-    font-size: 1.8rem;
-  }
 
   p {
-    opacity: 0.85;
+    margin-top: 2rem;
+    font-size: ${({ theme }) => theme.font.p.md};
+    text-align: left;
+    color: rgba(0, 0, 0, 0.6);
   }
 `;

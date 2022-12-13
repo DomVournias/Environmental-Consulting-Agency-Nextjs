@@ -31,10 +31,7 @@ export default function Home({ projects, statistics, common }) {
       />
       <Hero projects={projects} />
       <Statistics statistics={statistics} />
-      {/* <Spacer /> */}
       <Features />
-      {/* <Services /> */}
-
       <Services />
       <Projects projects={projects} />
       <Marquee />

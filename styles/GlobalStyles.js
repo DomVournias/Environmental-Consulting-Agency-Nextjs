@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { mobileS } from "./Breakpoints";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -166,7 +167,7 @@ export const Section = styled.section`
   padding-right: ${(props) => props.pr};
   background-color: ${(props) => props.bg};
 
-  /* background-image: url(${(props) => props.bgImage});
-  background-repeat: ${(props) => props.bgRepeat};
-  background-size: ${(props) => props.bgSize}; */
+  /* @media ${({ theme }) => theme.breakpoints.laptop} {
+    
+  } */
 `;
