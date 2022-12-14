@@ -5,6 +5,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import CountUp from "react-countup";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { SiCheckmarx } from "react-icons/si";
 
 const Statistics = ({ statistics }) => {
   const [counterOn, setCounterOn] = useState(false);
@@ -45,8 +46,6 @@ const Statistics = ({ statistics }) => {
     }
   }, [numbersInView]);
 
-  // console.log(numbersInView);
-
   return (
     <Section m="8rem auto 8rem auto">
       <Wrapper>
@@ -76,9 +75,14 @@ const Statistics = ({ statistics }) => {
                   ) : (
                     0
                   )}
+
+                  {/* <font>+</font> */}
                 </span>
 
-                <p>{title}</p>
+                <p>
+                  <SiCheckmarx />
+                  <label>{title}</label>
+                </p>
               </Stat>
             ))}
           </Stats>
@@ -133,16 +137,12 @@ const Heading = styled(motion.h2)`
   font-weight: 500;
   width: 100%;
   z-index: 3;
-  /* mix-blend-mode: overlay; */
 `;
 
 const Stats = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 4rem;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
-  grid-gap: 3rem; */
   width: 100%;
 `;
 
@@ -153,10 +153,29 @@ const Stat = styled.li`
   span {
     font-size: ${({ theme }) => theme.font.h.md};
     margin-bottom: 1rem;
+    width: fit-content;
+
+    > font {
+      font-size: 3rem;
+      font-weight: 500;
+    }
   }
 
   p {
-    font-size: ${({ theme }) => theme.font.p.sm};
-    width: 80%;
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.7rem;
+      font-size: ${({ theme }) => theme.font.h.statIcon};
+      color: ${({ theme }) => theme.green};
+    }
+
+    label {
+      font-size: ${({ theme }) => theme.font.h.statLabels};
+      font-weight: 900;
+      letter-spacing: 0.5rem;
+      color: ${({ theme }) => theme.blueTint.dark.f};
+    }
   }
 `;

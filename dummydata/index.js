@@ -1,11 +1,13 @@
 import Link from "next/link";
 import {
-  BsFillBarChartFill,
-  BsFillGearFill,
+  BsCompassFill,
+  BsBookHalf,
   BsInstagram,
-  BsShieldFillCheck,
+  BsFillPeopleFill,
 } from "react-icons/bs";
-import { ImFacebook2, ImLinkedin } from "react-icons/im";
+import { ImFacebook2, ImLinkedin, ImCompass2 } from "react-icons/im";
+import { FaDraftingCompass, FaUserCog } from "react-icons/fa";
+
 import { theme } from "../styles/Theme";
 
 export const services = [
@@ -20,7 +22,7 @@ export const services = [
       "Αξιολογήσεις ιδιοκτησίας για πιθανές ανησυχίες μόλυνσης και λύσεις αποκατάστασης",
     ],
 
-    icon: <BsFillGearFill />,
+    icon: <BsBookHalf />,
   },
   {
     title: "Συμβουλευτική",
@@ -31,7 +33,7 @@ export const services = [
       "Σχεδιασμός, υλοποίηση, επίβλεψη και υποστήριξη στην πιστοποίηση Συστημάτων Διαχείρισης",
       "Λύσεις βιωσιμότητας και ενέργειας",
     ],
-    icon: <BsShieldFillCheck />,
+    icon: <FaUserCog />,
   },
   {
     title: "Σχεδιασμός",
@@ -41,7 +43,7 @@ export const services = [
       "Προτάσεις ανάπτυξης και εύρεσης οικονομικών βιώσιμων λύσεων για τη διαχείριση των απορριμμάτων",
       "Τεχνική υποστήριξη βιομηχανιών για την ολοκληρωμένη διαχείριση των παραγόμενων απορριμμάτων σύμφωνα με το εκάστοτε νομικό πλαίσιο",
     ],
-    icon: <BsFillBarChartFill />,
+    icon: <FaDraftingCompass />,
   },
 ];
 

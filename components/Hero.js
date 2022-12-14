@@ -3,6 +3,7 @@ import Image from "next/legacy/image";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Section } from "../styles/GlobalStyles";
+import { H3 } from "../styles/Typography";
 
 const Hero = ({ projects }) => {
   // const [titleIndex, setTitleIndex] = useState(0);
@@ -71,26 +72,6 @@ const Hero = ({ projects }) => {
   return (
     <Section mx="" mt="-9rem" p="" overflow="hidden">
       <Inner>
-        {/* <span id="ballone">
-          <span>
-            <Image
-              src="/backHero1.png"
-              width="700"
-              height="700"
-              alt="cirlceOne"
-            />
-          </span>
-        </span>
-        <span id="balltwo">
-          <span>
-            <Image
-              src="/backHero2.png"
-              width="500"
-              height="500"
-              alt="cirlceTwo"
-            />
-          </span>
-        </span> */}
         <Overlay />
         <Image
           src="/heroBackImage.png"
@@ -109,6 +90,7 @@ const Hero = ({ projects }) => {
                 </Text>
               ))}
             </Title>
+            {/* <H3>Τεχνογνωσία</H3> */}
             <Description id="description">
               Για περισσότερα από 20 χρόνια παρέχουμε υπηρεσίες σε ένα ευρύ
               φάσμα περιβαλλοντικών και τεχνικής υποστήριξης, διαθέτοντας μια
@@ -147,7 +129,6 @@ export default Hero;
 
 const Text = styled.span`
   opacity: 0;
-  /* visibility: hidden; */
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.h.lg};
   font-weight: 500;
@@ -156,35 +137,53 @@ const Text = styled.span`
 `;
 
 const Description = styled.p`
-  margin-top: 2em;
+  margin-top: 2rem;
   transform: translateY(3rem);
   opacity: 0;
-  line-height: 2.8rem;
+  line-height: clamp(2rem, 6vw, 2.8rem);
   font-weight: 400;
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.p.md};
 `;
 
 const Content = styled.div`
-  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media ${({ theme }) => theme.breakpoints.desktop} {
+    width: 60%;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    width: 90%;
+  }
 `;
 
 const Title = styled.h1`
-  height: 5rem;
+  height: clamp(2.2rem, 10vw, 5rem);
   position: relative;
 `;
 
 const Inner = styled.div`
-  padding-top: 19rem;
   padding-bottom: 3rem;
   height: 100vh;
   position: relative;
 
   &#HeroBackgroundImage {
     z-index: 10;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.desktop} {
+    padding-top: 19rem;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.mobileL} {
+    padding-top: 17rem;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.mobileM} {
+    padding-top: 13rem;
   }
 `;
 

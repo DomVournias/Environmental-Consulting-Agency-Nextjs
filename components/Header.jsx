@@ -62,18 +62,20 @@ const Header = ({ headerMenu }) => {
           <Block>
             <Content>
               <Links isToggled={isToggled}>
-                <ul>
+                <List>
                   {routes.map(({ label, path }, i) => (
-                    <li key={i}>
+                    <ListItem key={i}>
                       <Link href={`${path}`}>
                         <span>{label}</span>
                         <Arrow />
                       </Link>
-                    </li>
+                    </ListItem>
                   ))}
-                </ul>
+                </List>
               </Links>
+
               <ContactInfo isToggled={isToggled}>
+                <EmailMobile href="">info@geonhellas.gr</EmailMobile>
                 <InfoBlock>
                   <Heading>Διεύθυνση</Heading>
                   <p>
@@ -97,6 +99,17 @@ const Header = ({ headerMenu }) => {
 
 export default Header;
 
+const EmailMobile = styled.a`
+  display: none;
+  opacity: 0.6;
+  line-height: 2rem;
+  padding: 0.5rem 2rem;
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    display: block;
+  }
+`;
+
 const fadeUp = css`
   transform: ${({ isToggled }) =>
     isToggled ? "translateY(0)" : "translateY(2rem)"};
@@ -113,6 +126,10 @@ const ContactInfo = styled.aside`
   ${fadeUp}
   transition: ${({ isToggled }) =>
     isToggled ? "all .8s cubic-bezier(.4,0,.2,1);" : ""};
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    width: 100%;
+  }
 `;
 
 const InfoBlock = styled.div`
@@ -124,7 +141,12 @@ const InfoBlock = styled.div`
     opacity: 0.6;
     line-height: 2rem;
   }
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    display: none;
+  }
 `;
+
 const Heading = styled.span`
   font-size: 1.4rem;
   font-weight: 500;
@@ -132,9 +154,8 @@ const Heading = styled.span`
 `;
 
 const Arrow = styled(BsArrowRight)`
-  font-size: 3.7rem;
+  font-size: ${({ theme }) => theme.font.h.arrow};
   stroke-width: 0.4;
-
   opacity: 0;
   transform: translateX(-20px);
 `;
@@ -147,6 +168,10 @@ const Content = styled.div`
   padding: 0 2rem;
   color: #fff;
   gap: 2.5rem;
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    flex-direction: column;
+  }
 `;
 
 const Links = styled.nav`
@@ -155,32 +180,37 @@ const Links = styled.nav`
   transition: ${({ isToggled }) =>
     isToggled ? "all .5s cubic-bezier(.4,0,.2,1);" : ""};
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    font-size: 3rem;
-    font-weight: 500;
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    width: 100%;
+  }
+`;
 
-    li {
-      color: #fff;
+const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-weight: 500;
+`;
 
-      :hover {
-        background-color: ${({ theme }) => theme.blue};
-        ${Arrow} {
-          opacity: 1;
-          transform: translateX(0px);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-      }
-      a {
-        display: flex;
-        gap: 1em;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 2rem;
-      }
+const ListItem = styled.li`
+  color: #fff;
+  font-size: ${({ theme }) => theme.font.h.headerLinks};
+
+  :hover {
+    background-color: ${({ theme }) => theme.blue};
+    ${Arrow} {
+      opacity: 1;
+      transform: translateX(0px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+  }
+
+  a {
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
   }
 `;
 
@@ -221,6 +251,7 @@ const Block = styled.div`
 `;
 
 const LogoWhite = styled(Link)`
+  width: 30vw;
   display: block;
   position: absolute;
   z-index: 999;
@@ -229,6 +260,7 @@ const LogoWhite = styled(Link)`
 `;
 
 const LogoDark = styled(Link)`
+  width: 30vw;
   display: block;
   z-index: 999;
   opacity: ${({ isToggled }) => (isToggled ? "0" : "1")};
@@ -250,9 +282,13 @@ const linesPosition = css`
   position: absolute;
   display: block;
   opacity: 1;
-  height: 6px;
+  height: 5px;
   border-radius: 1px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media ${({ theme }) => theme.breakpoints.mobileM} {
+    height: 4px;
+  }
 `;
 
 const MenuToggle = styled.button`
@@ -262,13 +298,17 @@ const MenuToggle = styled.button`
   position: relative;
   display: block;
   width: 50px;
-  height: 38px;
+  height: 35px;
   padding: 0;
   z-index: 1300;
   text-decoration: none;
   cursor: pointer;
   z-index: 999;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media ${({ theme }) => theme.breakpoints.mobileM} {
+    height: 32px;
+  }
 
   &::before {
     transform: ${({ isToggled }) =>
@@ -282,7 +322,6 @@ const MenuToggle = styled.button`
   ::before {
     ${linesPosition}
     right: 50%;
-    /* background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")}; */
     background: #fff;
   }
 
@@ -294,7 +333,7 @@ const MenuToggle = styled.button`
     position: absolute;
     display: block;
     width: 35px;
-    height: 6px;
+    height: 5px;
     top: 50%;
     border-radius: 1px;
     right: 50%;
@@ -302,9 +341,12 @@ const MenuToggle = styled.button`
     white-space: nowrap;
     overflow: hidden;
     transform: translate(25px, -50%) rotate(0deg);
-    /* background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")}; */
     background: #fff;
     transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media ${({ theme }) => theme.breakpoints.mobileM} {
+      height: 4px;
+    }
   }
 
   &::after {

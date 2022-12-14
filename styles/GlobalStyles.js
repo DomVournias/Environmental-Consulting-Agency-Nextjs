@@ -82,9 +82,6 @@ export const GlobalStyles = createGlobalStyle`
 
 }
 
-pre, code {
-  overflow: scroll;
-}
 
 *:focus {
   outline: none !important;
@@ -167,7 +164,4 @@ export const Section = styled.section`
   padding-right: ${(props) => props.pr};
   background-color: ${(props) => props.bg};
 
-  /* @media ${({ theme }) => theme.breakpoints.laptop} {
-    
-  } */
 `;

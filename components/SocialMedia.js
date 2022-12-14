@@ -33,13 +33,18 @@ const Socials = styled.div`
   gap: 3.5rem;
   width: fit-content;
 
-  a {
-    margin-right: 0.5rem;
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    display: none;
   }
 
-  a,
-  p {
-    display: inline-flex;
+  > p {
+    @media ${({ theme }) => theme.breakpoints.laptop} {
+      display: none;
+    }
+  }
+
+  a {
+    margin-right: 0.5rem;
   }
 
   p {

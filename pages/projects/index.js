@@ -86,6 +86,10 @@ const Description = styled.p`
   font-size: ${({ theme }) => theme.font.p.xl};
   line-height: 4.3rem;
   font-weight: 500;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 `;
 
 const Title = styled.div`
