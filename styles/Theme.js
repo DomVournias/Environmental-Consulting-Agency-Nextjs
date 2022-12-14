@@ -46,11 +46,11 @@ export const theme = {
     h: {
       headerLinks: "clamp(1.2rem, 5vw, 3.5rem)",
       statLabels: "clamp(1.2rem, 2vw, 2.2rem)",
-      statIcon: "clamp(1rem, 1.5vw, 1.5rem)",
+      statIcon: "clamp(0.94rem, 1.5vw, 1.5rem)",
       arrow: "clamp(2rem, 5vw, 3.7rem)",
       xs: "clamp(1.3rem, 10vw, 3.5rem)",
       sm: "clamp(2rem, 10vw, 4rem)",
-      md: "clamp(2.1rem, 4vw, 4.2rem)",
+      md: "clamp(1.75rem, 4vw, 4.2rem)",
       lg: "clamp(2.2rem, 10vw, 4.7rem)",
       xl: "clamp(2.3rem, 10vw, 5.7rem)",
     },

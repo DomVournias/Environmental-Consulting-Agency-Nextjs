@@ -82,6 +82,9 @@ export const GlobalStyles = createGlobalStyle`
 
 }
 
+pre, code {
+  overflow: scroll;
+}
 
 *:focus {
   outline: none !important;
@@ -163,5 +166,4 @@ export const Section = styled.section`
   padding-left: ${(props) => props.pl};
   padding-right: ${(props) => props.pr};
   background-color: ${(props) => props.bg};
-
 `;

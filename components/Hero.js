@@ -169,21 +169,10 @@ const Inner = styled.div`
   padding-bottom: 3rem;
   height: 100vh;
   position: relative;
+  padding-top: 35vh;
 
   &#HeroBackgroundImage {
     z-index: 10;
-  }
-
-  @media ${({ theme }) => theme.breakpoints.desktop} {
-    padding-top: 19rem;
-  }
-
-  @media ${({ theme }) => theme.breakpoints.mobileL} {
-    padding-top: 17rem;
-  }
-
-  @media ${({ theme }) => theme.breakpoints.mobileM} {
-    padding-top: 13rem;
   }
 `;
 

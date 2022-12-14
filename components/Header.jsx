@@ -305,6 +305,7 @@ const MenuToggle = styled.button`
   cursor: pointer;
   z-index: 999;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  mix-blend-mode: difference;
 
   @media ${({ theme }) => theme.breakpoints.mobileM} {
     height: 32px;

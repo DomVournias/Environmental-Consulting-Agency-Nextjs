@@ -4,6 +4,7 @@ import Link from "next/link";
 import { setCookie, hasCookie } from "cookies-next";
 import { IoMdClose } from "react-icons/io";
 import { theme } from "../styles/Theme";
+import { FaCookie } from "react-icons/fa";
 
 function CookiesConsent() {
   const [consent, setConsent] = useState(true);
@@ -43,8 +44,9 @@ function CookiesConsent() {
   return (
     <Container>
       <Banner>
-        <div>
+        <Inner>
           <Info>
+            <FaCookie />
             <span>
               This site uses cookies to enhance your experience.<br></br> See
               our <Link href="/docs/privacy-policy">privacy policy</Link> for
@@ -57,7 +59,7 @@ function CookiesConsent() {
               <Accept onClick={(e) => acceptCookies()}>Accept</Accept>
             </Consent>
           </Buttons>
-        </div>
+        </Inner>
         <Close onClick={(e) => closeP()}>
           <IoMdClose />
         </Close>
@@ -71,54 +73,89 @@ export default CookiesConsent;
 const Container = styled.div`
   display: flex;
   position: fixed;
-  /* left: 0; */
+  left: 0;
   top: auto;
   right: 0;
   bottom: 0;
   z-index: 9999;
   padding: 14px 12px;
+
+  @media ${theme.breakpoints.mobileL} {
+    padding: 1rem 15vw;
+  }
+
+  @media ${theme.breakpoints.mobileS} {
+    padding: 1rem 5vw;
+  }
 `;
 
 const Banner = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 0.6rem; */
-  /* width: 100%;
-  max-width: 255px; */
-  padding-left: 2.5rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   border-radius: 100vw;
-  background-color: #edebeb;
+  background-color: #f8f8f8;
   color: #252525;
   align-items: center;
   margin: 0 auto;
-  font-size: "15px";
+
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+  @media ${theme.breakpoints.tablet} {
+    padding: 2.5rem 1rem;
+  }
+`;
+
+const Inner = styled.div`
+  display: flex;
+
+  @media ${theme.breakpoints.tablet} {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 `;
 
 const Info = styled.div`
   font-size: 14px;
   font-weight: 500;
   display: flex;
-  margin-bottom: 15px;
+  align-items: center;
+  margin-right: 15px;
+  width: 100%;
+  justify-content: center;
+
+  @media ${theme.breakpoints.mobileL} {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  svg {
+    font-size: 2.5rem;
+    margin-right: 15px;
+    color: #001416;
+    opacity: 0.9;
+  }
 
   span {
     width: 100%;
+
+    @media ${theme.breakpoints.tablet} {
+      width: 50%;
+    }
   }
 
   a {
-    border-bottom: 1px solid #252525;
+    border-bottom: 1px solid #00272d;
   }
 `;
 
 const Buttons = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: center;
 
   a {
     font-size: 14px;
@@ -129,9 +166,8 @@ const Buttons = styled.div`
 
 const ConsentButton = styled.button`
   min-width: 110px;
-  /* margin-left: 15px; */
   padding: 15px 20px;
-  border-radius: 500px;
+  border-radius: 50px;
   border-color: rgba(37, 37, 37, 0);
   font-size: 17px;
   font-weight: 500;
@@ -144,6 +180,10 @@ const Consent = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+
+  @media ${theme.breakpoints.mobileL} {
+    flex-direction: column;
+  }
 `;
 const Decline = styled(ConsentButton)`
   background-color: #d6d6d6;
@@ -162,10 +202,19 @@ const Close = styled.div`
   padding: 10px;
   border: 2px solid transparent;
   border-radius: 500px;
-  background-color: #e0e0e0;
+  background-color: #d6d6d6;
+  color: #252525;
   box-shadow: none;
-  opacity: 0.3;
-  color: #e0e0e0;
-  background-color: ${theme.blueTint.dark.a};
   cursor: pointer;
+
+  @media ${theme.breakpoints.tablet} {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  @media ${theme.breakpoints.mobileL} {
+    right: 3vw;
+    top: 3vh;
+  }
 `;

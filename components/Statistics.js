@@ -47,7 +47,7 @@ const Statistics = ({ statistics }) => {
   }, [numbersInView]);
 
   return (
-    <Section m="8rem auto 8rem auto">
+    <Section>
       <Wrapper>
         <VideoPlayer>
           <Overlay />
@@ -102,16 +102,41 @@ const Content = styled.div`
   justify-content: center;
   gap: 6rem;
   padding-left: 4em;
+  position: relative;
+
+  @media ${({ theme }) => theme.breakpoints.laptop} {
+    padding-left: 2.5em;
+    gap: 3rem;
+  }
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    position: absolute;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
+  margin: 8rem auto 8rem auto;
+  position: relative;
+
+  @media ${({ theme }) => theme.breakpoints.laptop} {
+    margin: 4rem auto 4rem auto;
+  }
 `;
 
 const VideoPlayer = styled.div`
   width: calc(0vw + 47%);
   height: 80vh;
   position: relative;
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    width: 50%;
+    height: 120vh;
+    opacity: 0.4;
+  }
 `;
 const Overlay = styled.div`
   position: absolute;
@@ -144,16 +169,26 @@ const Stats = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 4rem;
   width: 100%;
+
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 4rem;
+  }
 `;
 
 const Stat = styled.li`
   display: flex;
   flex-direction: column;
 
+  @media ${({ theme }) => theme.breakpoints.tablet} {
+    justify-content: center;
+  }
+
   span {
     font-size: ${({ theme }) => theme.font.h.md};
     margin-bottom: 1rem;
-    width: fit-content;
+    width: 100%;
 
     > font {
       font-size: 3rem;
@@ -165,15 +200,23 @@ const Stat = styled.li`
     display: flex;
     align-items: center;
 
+    @media ${({ theme }) => theme.breakpoints.tablet} {
+      align-self: center;
+    }
+
     svg {
       margin-right: 0.7rem;
       font-size: ${({ theme }) => theme.font.h.statIcon};
       color: ${({ theme }) => theme.green};
+
+      @media ${({ theme }) => theme.breakpoints.tablet} {
+        color: ${({ theme }) => theme.blue};
+      }
     }
 
     label {
       font-size: ${({ theme }) => theme.font.h.statLabels};
-      font-weight: 900;
+
       letter-spacing: 0.5rem;
       color: ${({ theme }) => theme.blueTint.dark.f};
     }
