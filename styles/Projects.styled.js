@@ -9,6 +9,7 @@ export const Container = styled.div`
   margin-bottom: 8rem;
   max-width: 90rem;
   z-index: 3;
+  background-color: #fff;
 `;
 
 export const Wrapper = styled.div`

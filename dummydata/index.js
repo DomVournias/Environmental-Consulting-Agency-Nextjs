@@ -10,6 +10,27 @@ import { FaDraftingCompass, FaUserCog } from "react-icons/fa";
 
 import { theme } from "../styles/Theme";
 
+export const goals = [
+  {
+    title: "Στόχος 1",
+    goal: "Υπηρεσίες υψηλής αξίας διατηρώντας παράλληλα σχέσεις αμοιβαίου σεβασμού και συνέπειας με τους υπαλλήλους, τους συνεργάτες, τους πελάτες μας.",
+    image: "/GoalSlideOne.png",
+    id: "goal-one",
+  },
+  {
+    title: "Στόχος 2",
+    goal: "Βιώσιμες και εξατομικευμένες λύσεις στους πελάτες μας, προσαρμοσμένες στις νέες προκλήσεις και στο ταχέως μεταβαλλόμενο ρυθμιστικό πλαίσιο.",
+    image: "/GoalSlideTwo.png",
+    id: "goal-two",
+  },
+  {
+    title: "Στόχος 3",
+    goal: "Επίτευξη επιχειρηματικών στόχων, διατηρώντας παράλληλα την εταιρική κοινωνική ευθύνη για την προστασία του περιβάλλοντος.",
+    image: "/GoalSlideThree.png",
+    id: "goal-three",
+  },
+];
+
 export const services = [
   {
     title: "Μελέτες",

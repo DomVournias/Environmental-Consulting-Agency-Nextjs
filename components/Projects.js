@@ -28,7 +28,7 @@ const Projects = ({ projects }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   return (
-    <Section m="10rem auto 6rem auto" p="0 1rem 0 1rem">
+    <Section m="10rem auto 6rem auto" p="0 1rem 0 1rem" bg="#fff">
       <Container>
         <Wrapper>
           <Heading id="heading">

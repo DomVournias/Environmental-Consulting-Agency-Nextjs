@@ -1,6 +1,7 @@
 import CTA from "../components/CTA";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
+import Goals from "../components/Goals";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Isos from "../components/Isos";
@@ -31,8 +32,9 @@ export default function Home({ projects, statistics, common }) {
       />
       <Hero projects={projects} />
       <Statistics statistics={statistics} />
-      <Features />
+      {/* <Features /> */}
       <Services />
+      <Goals />
       <Projects projects={projects} />
       <Marquee />
       <Isos />

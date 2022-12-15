@@ -77,8 +77,8 @@ const CTA = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 3rem;
-  color: ${({ theme }) => theme.white};
-  background-color: ${({ theme }) => theme.blueTint.dark.b};
+  color: ${({ theme }) => theme.blueTint.dark.b};
+  background-color: ${({ theme }) => theme.green};
   border-radius: 8px;
   padding: 4rem 4rem;
 `;
@@ -101,8 +101,8 @@ const CTAButton = styled.button`
   border-radius: 8px;
   font-weight: 500;
   font-size: ${({ theme }) => theme.font.p.sm};
-  color: ${({ theme }) => theme.blueTint.dark.e};
-  background-color: ${({ theme }) => theme.blueTint.light.a};
+  color: ${({ theme }) => theme.blueTint.light.b};
+  background-color: ${({ theme }) => theme.blueTint.dark.b};
   cursor: pointer;
 
   div {
@@ -181,9 +181,10 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 95rem;
   margin: 0 auto;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 11em;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   position: relative;
 `;
 
