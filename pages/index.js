@@ -32,7 +32,7 @@ export default function Home({ projects, statistics, common }) {
       />
       <Hero projects={projects} />
       <Statistics statistics={statistics} />
-      {/* <Features /> */}
+      <Features />
       <Services />
       <Goals />
       <Projects projects={projects} />

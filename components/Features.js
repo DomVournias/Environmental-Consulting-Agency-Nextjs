@@ -399,7 +399,7 @@ const Services = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  font-size: ${({ theme }) => theme.font.h.xl};
+  font-size: ${({ theme }) => theme.font.h.lg};
   font-weight: 500;
   place-content: center;
   z-index: 200;
