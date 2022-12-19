@@ -27,6 +27,23 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 const Projects = ({ projects }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
+  // const uniqueProjectNames = [];
+
+  // const filteredProjects = projects.filter((project) => {
+  //   const isDuplicate = uniqueProjectNames.includes(
+  //     project.features.shortTitle
+  //   );
+
+  //   if (isDuplicate) {
+  //     uniqueProjectNames.push(project.features.shortTitle);
+
+  //     return true;
+  //   }
+  //   return false;
+  // });
+
+  // console.log(projects);
+  // console.log(filteredProjects);
   return (
     <Section m="10rem auto 6rem auto" p="0 1rem 0 1rem" bg="#fff">
       <Container>
@@ -34,13 +51,13 @@ const Projects = ({ projects }) => {
           <Heading id="heading">
             <Title>Τελευταία έργα</Title>
             <Link href="/projects">
-              <span>Όλλα τα έργα</span>
+              <span>Όλα τα έργα</span>
               <Arrow />
             </Link>
           </Heading>
           <Content>
             <Links>
-              {projects.map(({ title, slug }, i) => (
+              {projects.slice(5).map(({ features, slug }, i) => (
                 <Project
                   key={i}
                   onMouseOver={() => setImageIndex(i)}
@@ -48,7 +65,7 @@ const Projects = ({ projects }) => {
                   bg={activeBackgroundLink(i, imageIndex)}
                 >
                   <Link href={`/projects/${slug}`}>
-                    <span>{title}</span>
+                    <span>{features.shortTitle}</span>
                     <Arrow
                       opacity={activeOpacity(i, imageIndex)}
                       translate={activeTranslateArrow(i, imageIndex)}
