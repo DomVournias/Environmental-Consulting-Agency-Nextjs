@@ -23,6 +23,8 @@ const GET_ALL_WPDATA = gql`
         features {
           projectDate
           shortDescription
+          shortTitle
+          projectDateEnd
         }
         tags {
           nodes {
@@ -43,6 +45,16 @@ const GET_ALL_WPDATA = gql`
           number
         }
         title
+      }
+    }
+    companyLogos {
+      nodes {
+        featuredImage {
+          node {
+            title
+            sourceUrl
+          }
+        }
       }
     }
   }
@@ -75,6 +87,8 @@ const GET_PROJECTS = gql`
         slug
         features {
           projectDate
+          shortTitle
+          projectDateEnd
         }
         tags {
           nodes {
@@ -112,6 +126,8 @@ const GET_PROJECT_DETAILS = (slug) => {
       date
       features {
         projectDate
+        shortTitle
+        projectDateEnd
         
       }
       tags {
