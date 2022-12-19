@@ -162,7 +162,16 @@ const Info = styled.div`
 const Client = styled.h3`
   font-size: ${({ theme }) => theme.font.p.lg};
 `;
-const Tags = styled.ul``;
+const Tags = styled.ul`
+  display: flex;
+  list-style: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+`;
+
 const Tag = styled.li`
   font-weight: 500;
   font-size: ${({ theme }) => theme.font.p.sl};

@@ -75,8 +75,6 @@ const Statistics = ({ statistics }) => {
                   ) : (
                     0
                   )}
-
-                  {/* <font>+</font> */}
                 </span>
 
                 <p>

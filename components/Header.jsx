@@ -190,6 +190,12 @@ const List = styled.ul`
   flex-direction: column;
   gap: 1rem;
   font-weight: 500;
+  list-style: none;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
 `;
 
 const ListItem = styled.li`

@@ -173,7 +173,7 @@ const FeaturedImage = styled.div`
     height: fit-content;
     width: fit-content;
     color: ${({ theme }) => theme.blueTint.light.b};
-    font-size: ${({ theme }) => theme.font.h.md};
+    font-size: ${({ theme }) => theme.font.h.xs};
     z-index: 100;
   }
 
