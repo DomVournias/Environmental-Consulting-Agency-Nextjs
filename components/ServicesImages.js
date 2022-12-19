@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 
-export default function GoalsImages({ image, id, index, activeImageIndex }) {
+export default function ServicesImages({ image, id, index, activeImageIndex }) {
   return (
     <ImageInner>
       <ImageBlock

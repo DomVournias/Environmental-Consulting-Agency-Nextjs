@@ -1,125 +1,225 @@
-import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { goals } from "../dummydata";
-import gsap from "gsap";
+import { goals, services } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
-import GoalsImages from "./GoalsImages";
-import GoalsMessage from "./GoalsMessage";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Goals = () => {
-  const [activeImageIndex, setImageIndex] = useState(0);
-  const goalMessagesRef = useRef(null);
-  const goalImagesRef = useRef(null);
-
   useEffect(() => {
-    // function stopTrigger() {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: goalImagesRef.current,
-          start: "top top",
-          end: () => `+=${goalMessagesRef.current.offsetHeight}`,
-          scrub: true,
-          pin: true,
-          // markers: true,
-        },
-      });
-      // return tl;
+    gsap.to("#goalsContainer", {
+      duration: 6,
+      borderTopLeftRadius: "0%",
+      borderTopRightRadius: "0%",
+      scrollTrigger: {
+        trigger: "#goalsSection",
+        start: "-20% bottom",
+        end: "20% start",
+        scrub: 0.3,
+        // markers: true,
+      },
     });
-
-    // const master = gsap.timeline();
-    // master.add(stopTrigger());
-    return () => ctx.revert();
-    // }
   }, []);
 
   return (
-    <Section>
-      <Wrapper>
-        <LeftContainer ref={goalMessagesRef}>
-          <Inner>
-            <GoalMessages>
-              {goals.map(({ goal, title }, index) => (
-                <GoalsMessage
-                  key={index}
-                  goal={goal}
-                  title={title}
-                  index={index}
-                  updateActiveImage={setImageIndex}
-                />
-              ))}
-            </GoalMessages>
-          </Inner>
-        </LeftContainer>
-        <RightContainer
-          ref={goalImagesRef}
-          bg={({ theme }) => theme.blueTint.dark.b}
-        >
-          <GoalImagesList>
-            {goals.map(({ image, id }, index) => (
-              <GoalsImages
-                key={index}
-                image={image}
-                id={id}
-                index={index}
-                activeImageIndex={activeImageIndex}
-              />
+    <Section bg="#1a1a1a" mt="-2rem" id="goalsSection" pos="relative">
+      <Container id="goalsContainer">
+        <Wrapper>
+          <Header>
+            <h3 id="titleGoals">
+              Οι υπηρεσίες<br></br> που προσφέρουμε
+            </h3>
+            <p>
+              Προσφέρουμε ένα ολοκληρωμένο φάσμα περιβαλλοντικής τεχνογνωσίας
+              <br></br> σε θέματα διαχείρισης αποβλήτων και ενέργειας,<br></br>
+              που καλύπτει τόσο το σχεδιασμό και την ανάπτυξη έργων,<br></br>
+              όσο και την επίβλεψη της λειτουργίας.
+            </p>
+          </Header>
+          <Cards>
+            {goals.map(({ goal }, index) => (
+              <Card key={index}>
+                {/* <span>{icon}</span>
+                <ServiceTitle>{title}</ServiceTitle> */}
+                <Number>#{index + 1}</Number>
+                <Description>{goal}</Description>
+                {/* <ServiceList>
+                  {servicesList.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ServiceList> */}
+              </Card>
             ))}
-          </GoalImagesList>
-        </RightContainer>
-      </Wrapper>
-      <Spacer />
+          </Cards>
+
+          <CTA>
+            <Info>
+              <Title>Μιλήστε με έναν ειδικό</Title>
+              <Message>
+                Η ομάδα των ειδικών μας παρέχει συνεχή υποστήριξη καθ όλη τη
+                διάρκεια των έργων σας.
+              </Message>
+            </Info>
+            <CTAButton>
+              <div>Ξεκινήστε τώρα</div>
+            </CTAButton>
+          </CTA>
+        </Wrapper>
+      </Container>
     </Section>
   );
 };
 
 export default Goals;
 
-const Wrapper = styled.div`
+const Number = styled.span`
+  background-color: ${({ theme }) => theme.blueTint.dark.c};
+  color: ${({ theme }) => theme.blueTint.light.a};
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 50%;
+`;
+
+const Description = styled.p`
+  font-size: ${({ theme }) => theme.font.p.md};
+  line-height: 2.1rem;
+`;
+
+const CTA = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 3rem;
+  color: ${({ theme }) => theme.blueTint.dark.b};
+  background-color: ${({ theme }) => theme.green};
+  border-radius: 8px;
+  padding: 4rem 4rem;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h4`
+  font-size: ${({ theme }) => theme.font.p.lg};
+  margin-bottom: 2rem;
+`;
+
+const Message = styled.p`
+  font-size: ${({ theme }) => theme.font.p.md};
+  opacity: 0.9;
+`;
+
+const CTAButton = styled.button`
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.font.p.sm};
+  color: ${({ theme }) => theme.blueTint.light.b};
+  background-color: ${({ theme }) => theme.blueTint.dark.b};
+  cursor: pointer;
+
+  div {
+    padding: 1rem 2rem;
+  }
+`;
+
+const Cards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  width: 100%;
+`;
+
+const Card = styled.div`
+  /* position: relative; */
+  width: 30%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 2rem 2rem 2rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  /* ul {
+    gap: 1rem;
+    li {
+      opacity: 0.9;
+      font-size: ${({ theme }) => theme.font.p.sm};
+    }
+  } */
+
+  > span {
+    font-size: 1.8rem;
+  }
+
+  p {
+    opacity: 0.85;
+  }
+`;
+
+const ServiceTitle = styled.h3`
+  font-size: ${({ theme }) => theme.font.p.lg};
+  margin-bottom: 1rem;
+  z-index: 2;
+`;
+
+const ServiceList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: ${({ theme }) => theme.font.p.sm};
+  list-style: disc;
+  list-style-type: disc;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 22px;
+
+  > li {
+    display: list-item;
+  }
 `;
 
 const Container = styled.div`
-  width: 50%;
-  display: flex;
-`;
-
-const LeftContainer = styled(Container)`
-  justify-content: center;
-`;
-
-const RightContainer = styled(Container)`
-  align-items: center;
-  align-self: start;
-  background-color: ${(props) => props.bg};
-  height: 100vh;
-`;
-
-const Inner = styled.div`
-  width: 50%;
-  height: fit-content;
-`;
-
-const GoalMessages = styled.ul`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0;
-  box-sizing: border-box;
-`;
-
-const GoalImagesList = styled.ul`
-  position: relative;
-  width: 30rem;
-  height: 30rem;
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
-`;
-
-const Spacer = styled.span`
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: ${({ theme }) => theme.white};
+  z-index: 999;
+  overflow: visible;
   display: block;
-  height: 100vh;
+  position: relative;
+`;
+
+const Wrapper = styled.div`
+  width: 95rem;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5rem;
+  width: 100%;
+
+  h3 {
+    font-size: ${({ theme }) => theme.font.h.md};
+  }
+
+  p {
+    margin-top: 2rem;
+    font-size: ${({ theme }) => theme.font.p.md};
+    text-align: left;
+    color: rgba(0, 0, 0, 0.6);
+  }
 `;
