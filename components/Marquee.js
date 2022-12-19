@@ -1,19 +1,19 @@
 import Image from "next/legacy/image";
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
-import { companyLogos } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
 
-const Marquee = () => {
+const Marquee = ({ companyLogos }) => {
+  // console.log(companyLogos);
   return (
-    <Section mx="71.25rem" m="0 auto">
+    <Section mx="90rem" m="0 auto">
       <Wrapper>
         <MarqueeGroup>
-          {companyLogos.map(({ alt, image }, i) => (
+          {companyLogos.map(({ title, sourceUrl }, i) => (
             <Logo key={i}>
               <Image
-                src={`${image}`}
-                alt={alt}
+                src={sourceUrl}
+                alt={title}
                 layout="fill"
                 objectFit="contain"
               />
@@ -21,11 +21,11 @@ const Marquee = () => {
           ))}
         </MarqueeGroup>
         <MarqueeGroup>
-          {companyLogos.map(({ alt, image }, i) => (
+          {companyLogos.map(({ title, sourceUrl }, i) => (
             <Logo key={i}>
               <Image
-                src={`${image}`}
-                alt={alt}
+                src={sourceUrl}
+                alt={title}
                 layout="fill"
                 objectFit="contain"
               />
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   position: relative;
   margin: auto;
   overflow: hidden;
-  width: 71.25rem;
+  width: 100%;
   opacity: 0.5;
   margin: 7rem 0rem;
 
