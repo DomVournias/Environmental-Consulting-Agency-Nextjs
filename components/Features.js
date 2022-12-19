@@ -279,6 +279,7 @@ const ImageContainer = styled.div`
   z-index: 600;
   border-radius: 50%;
   overflow: hidden;
+  filter: grayscale(100%);
 `;
 
 const Arc = styled.div`
