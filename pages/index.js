@@ -16,12 +16,12 @@ import client from "../utils/apollo";
 import globalMeta from "../utils/globalmeta";
 import { GET_ALL_WPDATA } from "../utils/queries";
 
-export default function Home({ projects, statistics, common }) {
+export default function Home({ projects, statistics, companyLogos, common }) {
   const structuredLd = JSON.stringify({
     "@context": globalMeta.canonicalUrl + "/",
     description: "Environmental Consultants",
   });
-  console.log(common);
+  // console.log(companyLogos);
   return (
     <Layout>
       <SEOHead
@@ -33,10 +33,10 @@ export default function Home({ projects, statistics, common }) {
       <Hero projects={projects} />
       <Statistics statistics={statistics} />
       <Features />
-      <Services />
       <Goals />
+      <Services />
       <Projects projects={projects} />
-      <Marquee />
+      <Marquee companyLogos={companyLogos} />
       <Isos />
     </Layout>
   );
@@ -51,6 +51,9 @@ export async function getStaticProps() {
     props: {
       projects: data.projects.nodes,
       statistics: data.statistics.nodes,
+      companyLogos: data.companyLogos.nodes.map(
+        (item) => item.featuredImage.node
+      ),
     },
     revalidate: 1,
   };
