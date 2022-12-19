@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "../../components/Layout";
 import SEOHead from "../../components/SEO";
+import { projects } from "../../dummydata";
 import { Section } from "../../styles/GlobalStyles";
 import client from "../../utils/apollo";
 import globalMeta from "../../utils/globalmeta";
@@ -44,6 +45,7 @@ const structuredLd = JSON.stringify({
 });
 
 const ProjectInfo = ({ project }) => {
+  console.log(project);
   const image = project.featuredImage.node.sourceUrl;
   return (
     <Layout>
@@ -55,6 +57,7 @@ const ProjectInfo = ({ project }) => {
       />
       <Section m="-9rem auto 0 auto">
         <FeaturedImage>
+          <h2>{project.title}</h2>
           <Image
             src={image}
             layout="fill"
@@ -71,7 +74,9 @@ const ProjectInfo = ({ project }) => {
               </Block>
               <Block>
                 <span>Ημερομηνία</span>
-                <p>{project.features.projectDate}</p>
+                <p id="project-date-start">{project.features.projectDate} </p>
+                <p id="project-date-indicator">έως</p>
+                <p id="project-date-end">{project.features.projectDateEnd}</p>
               </Block>
             </Row>
 
@@ -124,6 +129,12 @@ const Block = styled.div`
   p {
     margin-left: 1rem;
   }
+
+  & #project-date-indicator {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.86;
+  }
 `;
 
 const Content = styled.div`
@@ -150,6 +161,21 @@ const FeaturedImage = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+
+  h2 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    color: ${({ theme }) => theme.blueTint.light.b};
+    font-size: ${({ theme }) => theme.font.h.md};
+    z-index: 100;
+  }
 
   &::after {
     content: " ";
