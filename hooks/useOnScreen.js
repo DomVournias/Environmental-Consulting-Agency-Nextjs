@@ -14,11 +14,15 @@ function useOnScreen(ref, rootMargin = "0px") {
         rootMargin,
       }
     );
+
+    const currentElement = ref?.current;
+
     if (ref.current) {
-      observer.observe(ref.current);
+      observer.observe(currentElement);
     }
+
     return () => {
-      observer.unobserve(ref.current);
+      observer.unobserve(currentElement);
     };
   }, []); // Empty array ensures that effect is only run on mount and unmount
   return isIntersecting;
