@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Link from "next/link";
-import CTA from "./CTA";
 import { socials } from "../dummydata";
 
 const Footer = () => {
@@ -31,9 +30,7 @@ const Footer = () => {
           <span>Τεχνογνωσία.</span>
           <span>Συνέπεια.</span>
         </Title>
-        {/* <CTA message="Ξεκινήστε τώρα" /> */}
         <Links>
-          {/* <div /> */}
           <ul>
             {footerLinks.map(({ label, url }, i) => (
               <li key={i}>
@@ -43,14 +40,12 @@ const Footer = () => {
           </ul>
         </Links>
         <SubFooter>
-          {/* <p>©2022 Geon Hellas IKE</p> */}
           <div id="subfooter_block">
             <span>Διεύθυνση</span>
             <p>Πρεβέζης 1, Νέα Φιλαδέλφεια, 143 42</p>
           </div>
           <div id="subfooter_block">
             <span>Επικοινωνία</span>
-            {/* <a href="">info@geonhellas.gr</a> */}
             <a href="">+30 2103416717</a>
           </div>
 
@@ -123,7 +118,6 @@ const Socials = styled.div`
 
 const FooterStyled = styled.footer`
   padding: 8rem 0rem;
-  /* height: 90vh; */
   background-color: ${({ theme }) => theme.blueTint.dark.b};
   display: flex;
   flex-direction: column;
@@ -158,7 +152,6 @@ const Links = styled.nav`
     display: flex;
     font-size: ${({ theme }) => theme.font.p.md};
     font-weight: 500;
-    /* padding-left: 20%; */
     gap: 5rem;
   }
 

@@ -8,7 +8,7 @@ import geonLogoDark from "../public/GeonLogoDark.png";
 import geonLogoWhite from "../public/GeonLogoWhite.png";
 import SocialMedia from "./SocialMedia";
 
-const Header = ({ headerMenu }) => {
+const Header = () => {
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => setIsToggled((prevState) => !prevState);
@@ -369,7 +369,6 @@ const MenuToggle = styled.button`
     ${linesPosition}
     right: 50%;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* background: ${({ isToggled }) => (isToggled ? "#fff" : "#000")}; */
     background: #fff;
   }
 `;

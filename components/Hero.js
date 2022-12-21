@@ -3,10 +3,10 @@ import Image from "next/legacy/image";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Section } from "../styles/GlobalStyles";
-import { H3 } from "../styles/Typography";
+
 
 const Hero = ({ projects }) => {
-  // const [titleIndex, setTitleIndex] = useState(0);
+
   useEffect(() => {
     gsap.to("#description", {
       y: 0,
@@ -57,17 +57,7 @@ const Hero = ({ projects }) => {
     },
   ];
 
-  useEffect(() => {
-    setTimeout(() => {
-      // setTitleIndex();
-    }, 2000);
-  }, []);
 
-  const projectImages = projects.map(
-    (image) => image.featuredImage.node.sourceUrl
-  );
-
-  // console.log(theme);
 
   return (
     <Section mx="" mt="-9rem" p="" overflow="hidden">
@@ -90,35 +80,14 @@ const Hero = ({ projects }) => {
                 </Text>
               ))}
             </Title>
-            {/* <H3>Τεχνογνωσία</H3> */}
             <Description id="description">
               Για περισσότερα από 20 χρόνια παρέχουμε υπηρεσίες σε ένα ευρύ
               φάσμα περιβαλλοντικών και τεχνικής υποστήριξης, διαθέτοντας μια
               σταθερή βάση γνώσεων και μια ομάδα υψηλής εξειδίκευσης και
               εμπειρίας.
             </Description>
-            {/* <ImageContainer id="image">
-              <Image
-                src="/heroGridImage5.png"
-                objectFit="contain"
-                alt="hero-image"
-                layout="fill"
-              />
-            </ImageContainer> */}
-          </Content>
 
-          {/* <HeroMenu id="menu">
-            <ul>
-              {links.map(({ label, path }, i) => (
-                <li key={i} className="button-86">
-                  <Link href={`${path}`}>{label}</Link>
-                </li>
-              ))}
-            </ul>
-            <CallButton />
-            
-          </HeroMenu> */}
-          {/* <Marquee /> */}
+          </Content>
         </Wrapper>
       </Inner>
     </Section>
@@ -182,7 +151,6 @@ const Overlay = styled.span`
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.6); */
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 20;
 `;

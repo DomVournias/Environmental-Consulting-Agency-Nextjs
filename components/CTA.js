@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import styled, { css } from "styled-components";
-import { Section } from "../styles/GlobalStyles";
+import styled from "styled-components";
 
 const CTA = (props) => {
   return (
@@ -16,11 +15,6 @@ const CTA = (props) => {
 
 export default CTA;
 
-const Inner = styled.div`
-  padding: 10rem 0rem;
-`;
-
-const plusStyles = css``;
 
 const LinkStyled = styled(Link)`
   color: #fff;
@@ -28,7 +22,6 @@ const LinkStyled = styled(Link)`
   display: flex;
   align-items: center;
   gap: 2rem;
-  /* margin: 0 auto; */
   max-width: 71.25rem;
   width: fit-content;
   position: relative;
@@ -157,4 +150,3 @@ const LinkStyled = styled(Link)`
   }
 `;
 
-const Container = styled(Link)``;

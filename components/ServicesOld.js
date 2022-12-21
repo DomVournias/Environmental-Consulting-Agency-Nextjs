@@ -11,7 +11,6 @@ const Services2 = () => {
       <Wrapper>
         <Heading>Τι προσφέρουμε</Heading>
         <Content>
-          {/* <BackBlob /> */}
           {services.map(
             ({ icon, title, servicesList, show }, i) =>
               show && (

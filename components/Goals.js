@@ -18,7 +18,6 @@ const Goals = () => {
         start: "-20% bottom",
         end: "20% start",
         scrub: 0.3,
-        // markers: true,
       },
     });
   }, []);
@@ -41,15 +40,9 @@ const Goals = () => {
           <Cards>
             {goals.map(({ goal }, index) => (
               <Card key={index}>
-                {/* <span>{icon}</span>
-                <ServiceTitle>{title}</ServiceTitle> */}
+              
                 <Number>#{index + 1}</Number>
                 <Description>{goal}</Description>
-                {/* <ServiceList>
-                  {servicesList.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ServiceList> */}
               </Card>
             ))}
           </Cards>
@@ -134,7 +127,6 @@ const Cards = styled.div`
 `;
 
 const Card = styled.div`
-  /* position: relative; */
   width: 30%;
   flex-grow: 1;
   display: flex;
@@ -143,14 +135,6 @@ const Card = styled.div`
   padding: 2rem 2rem 2rem 2rem;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.1);
-
-  /* ul {
-    gap: 1rem;
-    li {
-      opacity: 0.9;
-      font-size: ${({ theme }) => theme.font.p.sm};
-    }
-  } */
 
   > span {
     font-size: 1.8rem;
@@ -161,29 +145,6 @@ const Card = styled.div`
   }
 `;
 
-const ServiceTitle = styled.h3`
-  font-size: ${({ theme }) => theme.font.p.lg};
-  margin-bottom: 1rem;
-  z-index: 2;
-`;
-
-const ServiceList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: ${({ theme }) => theme.font.p.sm};
-  list-style: disc;
-  list-style-type: disc;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 22px;
-
-  > li {
-    display: list-item;
-  }
-`;
 
 const Container = styled.div`
   border-top-left-radius: 50%;

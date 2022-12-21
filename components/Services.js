@@ -1,10 +1,8 @@
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { goals, services } from "../dummydata";
+import {  services } from "../dummydata";
 import gsap from "gsap";
 import { Section } from "../styles/GlobalStyles";
-import GoalsImages from "./ServicesImages";
 import ServicesList from "./ServicesList";
 import ServicesImages from "./ServicesImages";
 

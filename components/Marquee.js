@@ -4,7 +4,6 @@ import styled, { css, keyframes } from "styled-components";
 import { Section } from "../styles/GlobalStyles";
 
 const Marquee = ({ companyLogos }) => {
-  // console.log(companyLogos);
   return (
     <Section mx="90rem" m="0 auto">
       <Wrapper>

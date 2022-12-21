@@ -4,8 +4,9 @@ import Layout from "../../components/Layout";
 import SEOHead from "../../components/SEO";
 import client from "../../utils/apollo";
 import globalMeta from "../../utils/globalmeta";
-
 import { GET_DOC_DETAILS, GET_DOC_SLUG } from "../../utils/queries";
+
+//isr
 
 export const getStaticPaths = async () => {
   const { data } = await client.query({

@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Layout from "../../components/Layout";
 import SEOHead from "../../components/SEO";
-import { projects } from "../../dummydata";
 import { Section } from "../../styles/GlobalStyles";
 import client from "../../utils/apollo";
 import globalMeta from "../../utils/globalmeta";
@@ -45,7 +44,6 @@ const structuredLd = JSON.stringify({
 });
 
 const ProjectInfo = ({ project }) => {
-  console.log(project);
   const image = project.featuredImage.node.sourceUrl;
   return (
     <Layout>

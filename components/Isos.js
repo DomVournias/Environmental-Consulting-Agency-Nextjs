@@ -61,7 +61,6 @@ const ParallaxBackground = styled.div`
   background-image: url(${(props) => props.bgImage});
   background-size: cover;
   opacity: 0.5;
-  /* transform: ${`translateY(${(props) => props.move})`}; */
   z-index: 1;
 `;
 

@@ -1,7 +1,6 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import styled, { css, keyframes } from "styled-components";
-import { motion, useAnimation, useScroll } from "framer-motion";
+import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Section } from "../styles/GlobalStyles";
@@ -138,13 +137,6 @@ const Features = () => {
 
   return (
     <Section>
-      {/* <Oval>
-        <OvalWrapper id="oval-wrapper">
-          <OvalMargin>
-            <OvalDark id="oval" />
-          </OvalMargin>
-        </OvalWrapper>
-      </Oval> */}
       <Container id="container">
         <Content id="content">
           <Services id="services">
@@ -199,7 +191,6 @@ const OvalWrapper = styled.div`
   right: 0;
   bottom: auto;
   z-index: 1;
-  /* overflow: hidden; */
   width: 100%;
 `;
 const OvalMargin = styled.div`
@@ -314,7 +305,6 @@ const CircleFour = styled.span`
   height: 68vw;
   z-index: 500;
   background: #e5e5e5;
-  /* mix-blend-mode: difference; */
   transform: scale(0);
   transform-style: preserve-3d;
 `;
@@ -334,7 +324,6 @@ const CircleThree = styled.span`
   z-index: 500;
   background: #1a1a1a;
   transform: scale(0);
-  /* mix-blend-mode: difference; */
   transform-style: preserve-3d;
 `;
 
@@ -365,7 +354,6 @@ const CircleTwo = styled.span`
   height: 100vw;
   z-index: 400;
   background: #e5e5e5;
-  /* mix-blend-mode: difference; */
   transform: scale(0);
   transform-style: preserve-3d;
 `;
@@ -373,7 +361,6 @@ const CircleTwo = styled.span`
 const Content = styled.div`
   display: grid;
   place-content: center;
-  /* padding: 32px 0; */
   width: 100%;
   height: 100%;
   background: #e5e5e5;

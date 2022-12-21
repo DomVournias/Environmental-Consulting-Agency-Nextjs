@@ -1,6 +1,6 @@
 import Image from "next/legacy/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Section } from "../styles/GlobalStyles";
 import {
   Arrow,
@@ -21,29 +21,12 @@ import {
   activeOpacity,
   activeTranslateArrow,
 } from "../styles/Theme";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+
 
 const Projects = ({ projects }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
-  // const uniqueProjectNames = [];
-
-  // const filteredProjects = projects.filter((project) => {
-  //   const isDuplicate = uniqueProjectNames.includes(
-  //     project.features.shortTitle
-  //   );
-
-  //   if (isDuplicate) {
-  //     uniqueProjectNames.push(project.features.shortTitle);
-
-  //     return true;
-  //   }
-  //   return false;
-  // });
-
-  // console.log(projects);
-  // console.log(filteredProjects);
   return (
     <Section m="6rem auto 6rem auto" p="0 1rem 0 1rem" bg="#fff">
       <Container>

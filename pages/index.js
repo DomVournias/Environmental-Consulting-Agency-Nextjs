@@ -1,8 +1,5 @@
-import CTA from "../components/CTA";
 import Features from "../components/Features";
-import Footer from "../components/Footer";
 import Goals from "../components/Goals";
-import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Isos from "../components/Isos";
 import Layout from "../components/Layout";
@@ -10,7 +7,6 @@ import Marquee from "../components/Marquee";
 import Projects from "../components/Projects";
 import SEOHead from "../components/SEO";
 import Services from "../components/Services";
-import Spacer from "../components/Spacer";
 import Statistics from "../components/Statistics";
 import Executives from "../components/Executives";
 import client from "../utils/apollo";
