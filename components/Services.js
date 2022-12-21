@@ -35,22 +35,38 @@ const Services = () => {
     // }
   }, []);
 
+  console.log(ServicesContainerRef?.current?.offsetHeight);
+
+  console.log(services);
+
   return (
     <Section>
       <Wrapper>
-        <LeftContainer ref={ServicesContainerRef}>
+        <LeftContainer>
           <Inner>
-            <ServicesUL>
-              {services.map(({ title, servicesList }, index) => (
-                <ServicesList
-                  key={index}
-                  servicesList={servicesList}
-                  title={title}
-                  index={index}
-                  updateActiveImage={setImageIndex}
-                />
-              ))}
+            <ServicesUL ref={ServicesContainerRef}>
+              <ServicesList
+                key={0}
+                servicesList={services[0].servicesList}
+                title={services[0].title}
+                index={0}
+                updateActiveImage={setImageIndex}
+              />
+              <ServicesList
+                key={1}
+                servicesList={services[1].servicesList}
+                title={services[1].title}
+                index={1}
+                updateActiveImage={setImageIndex}
+              />
             </ServicesUL>
+            <ServicesList
+              key={2}
+              servicesList={services[2].servicesList}
+              title={services[2].title}
+              index={2}
+              updateActiveImage={setImageIndex}
+            />
           </Inner>
         </LeftContainer>
         <RightContainer
@@ -70,7 +86,6 @@ const Services = () => {
           </ServicesImagesList>
         </RightContainer>
       </Wrapper>
-      <Spacer />
     </Section>
   );
 };
@@ -85,6 +100,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   width: 50%;
   display: flex;
+  flex-direction: column;
 `;
 
 const LeftContainer = styled(Container)`
@@ -101,6 +117,7 @@ const RightContainer = styled(Container)`
 const Inner = styled.div`
   width: 50%;
   height: fit-content;
+  margin: 0 auto;
 `;
 
 const ServicesUL = styled.ul`
@@ -115,7 +132,7 @@ const ServicesImagesList = styled.ul`
   position: relative;
   width: 30rem;
   height: 30rem;
-  margin: 0 auto;
+  margin: auto;
   padding: 0;
   box-sizing: border-box;
 `;

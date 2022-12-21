@@ -45,7 +45,7 @@ const Projects = ({ projects }) => {
   // console.log(projects);
   // console.log(filteredProjects);
   return (
-    <Section m="10rem auto 6rem auto" p="0 1rem 0 1rem" bg="#fff">
+    <Section m="6rem auto 6rem auto" p="0 1rem 0 1rem" bg="#fff">
       <Container>
         <Wrapper>
           <Heading id="heading">
