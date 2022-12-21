@@ -14,7 +14,6 @@ const Services = () => {
   const ServicesImagesRef = useRef(null);
 
   useEffect(() => {
-    // function stopTrigger() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -23,21 +22,12 @@ const Services = () => {
           end: () => `+=${ServicesContainerRef.current.offsetHeight}`,
           scrub: true,
           pin: true,
-          // markers: true,
         },
       });
-      // return tl;
     });
 
-    // const master = gsap.timeline();
-    // master.add(stopTrigger());
     return () => ctx.revert();
-    // }
   }, []);
-
-  console.log(ServicesContainerRef?.current?.offsetHeight);
-
-  console.log(services);
 
   return (
     <Section>
@@ -135,9 +125,4 @@ const ServicesImagesList = styled.ul`
   margin: auto;
   padding: 0;
   box-sizing: border-box;
-`;
-
-const Spacer = styled.span`
-  display: block;
-  height: 100vh;
 `;
