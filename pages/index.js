@@ -12,16 +12,24 @@ import SEOHead from "../components/SEO";
 import Services from "../components/Services";
 import Spacer from "../components/Spacer";
 import Statistics from "../components/Statistics";
+import Executives from "../components/Executives";
 import client from "../utils/apollo";
 import globalMeta from "../utils/globalmeta";
 import { GET_ALL_WPDATA } from "../utils/queries";
+import "swiper/css";
 
-export default function Home({ projects, statistics, companyLogos, common }) {
+export default function Home({
+  projects,
+  statistics,
+  companyLogos,
+  executives,
+  common,
+}) {
   const structuredLd = JSON.stringify({
     "@context": globalMeta.canonicalUrl + "/",
     description: "Environmental Consultants",
   });
-  // console.log(companyLogos);
+
   return (
     <Layout>
       <SEOHead
@@ -35,6 +43,7 @@ export default function Home({ projects, statistics, companyLogos, common }) {
       <Features />
       <Goals />
       <Services />
+      <Executives executives={executives} />
       <Projects projects={projects} />
       <Marquee companyLogos={companyLogos} />
       <Isos />
@@ -54,6 +63,7 @@ export async function getStaticProps() {
       companyLogos: data.companyLogos.nodes.map(
         (item) => item.featuredImage.node
       ),
+      executives: data.executives.nodes,
     },
     revalidate: 1,
   };
