@@ -16,7 +16,7 @@ export default function ServicesList({
       updateActiveImage(index);
       console.log(onScreen);
     }
-  }, [onScreen, index]);
+  }, [onScreen, updateActiveImage, index]);
   return (
     <GoalsListItem>
       <Info>
