@@ -9,10 +9,13 @@ import SEOHead from "../components/SEO";
 import Services from "../components/Services";
 import Statistics from "../components/Statistics";
 import Executives from "../components/Executives";
+import ContactForm from "../components/ContactForm";
 import client from "../utils/apollo";
 import globalMeta from "../utils/globalmeta";
 import { GET_ALL_WPDATA } from "../utils/queries";
 import "swiper/css";
+import Modal from "../components/Modal";
+import { useState } from "react";
 
 export default function Home({
   projects,
@@ -26,6 +29,8 @@ export default function Home({
     description: "Environmental Consultants",
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Layout>
       <SEOHead
@@ -35,13 +40,16 @@ export default function Home({
         description="Environmental Consultants"
       />
       <Hero projects={projects} />
-      <Statistics statistics={statistics} />
-      <Features />
-      <Goals />
+      {/* <Statistics statistics={statistics} />
+      <Features /> */}
+      <Goals onOpen={() => setShowModal(true)} />
       <Services />
       <Executives executives={executives} />
       <Projects projects={projects} />
       <Marquee companyLogos={companyLogos} />
+      <Modal show={showModal} onClose={() => setShowModal(false)}>
+        <ContactForm />
+      </Modal>
       <Isos />
     </Layout>
   );

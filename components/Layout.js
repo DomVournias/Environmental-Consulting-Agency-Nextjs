@@ -10,6 +10,7 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
       <CookiesConsent />
+      <div id="modal-root"></div>
       <ThemeProvider theme={theme}>
         <Header />
         <Main>

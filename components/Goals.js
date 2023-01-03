@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { goals, services } from "../dummydata";
+import { goals } from "../dummydata";
 import { Section } from "../styles/GlobalStyles";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Goals = () => {
+const Goals = ({ onOpen }) => {
   useEffect(() => {
     gsap.to("#goalsContainer", {
       duration: 6,
@@ -21,6 +21,11 @@ const Goals = () => {
       },
     });
   }, []);
+
+  const handleOpenModal = (e) => {
+    e.preventDefault();
+    onOpen();
+  };
 
   return (
     <Section bg="#1a1a1a" mt="-2rem" id="goalsSection" pos="relative">
@@ -40,7 +45,6 @@ const Goals = () => {
           <Cards>
             {goals.map(({ goal }, index) => (
               <Card key={index}>
-              
                 <Number>#{index + 1}</Number>
                 <Description>{goal}</Description>
               </Card>
@@ -55,7 +59,7 @@ const Goals = () => {
                 διάρκεια των έργων σας.
               </Message>
             </Info>
-            <CTAButton>
+            <CTAButton onClick={handleOpenModal}>
               <div>Ξεκινήστε τώρα</div>
             </CTAButton>
           </CTA>
@@ -144,7 +148,6 @@ const Card = styled.div`
     opacity: 0.85;
   }
 `;
-
 
 const Container = styled.div`
   border-top-left-radius: 50%;
