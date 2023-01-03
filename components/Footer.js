@@ -153,6 +153,12 @@ const Links = styled.nav`
     font-size: ${({ theme }) => theme.font.p.md};
     font-weight: 500;
     gap: 5rem;
+    list-style: none;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
   }
 
   li {
